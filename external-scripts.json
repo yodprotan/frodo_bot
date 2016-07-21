@@ -8,5 +8,10 @@
   "hubot-maps",
   "hubot-redis-brain",
   "hubot-rules",
-  "hubot-shipit"
+  "hubot-shipit",
+  "hubot-thank-you",
+  "hubot-youtube"
+]
+[
+  "hubot-youtube"
 ]
