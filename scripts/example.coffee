@@ -36,8 +36,8 @@ module.exports = (robot) ->
   robot.respond /TIME$/i, (msg) ->
     today = new Date()
     year = today.getFullYear()  + " "
-    month = monthlist[date.getMonth()] + " "
-    date = date.getDate() + ", "
+    month = monthlist[today.getMonth()] + " "
+    date = today.getDate() + ", "
     day = daylist[today.getDay()]
     hour = today.getHours() + ":"
     minute = today.getMinutes()
