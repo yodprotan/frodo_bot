@@ -12,5 +12,7 @@
   "hubot-thank-you",
   "hubot-youtube",
   "hubot-ambush",
-  "hubot-reload-scripts"
+  "hubot-reload-scripts",
+  "hubot-google",
+  "hubot-coin"
 ]
