@@ -38,7 +38,7 @@ module.exports = (robot) ->
     year = today.getFullYear()  + " "
     month = monthlist[today.getMonth()] + " "
     date = today.getDate() + ", "
-    day = daylist[today.getDay()]
+    day = daylist[today.getDay()] + ","
     hour = today.getHours() % 12
     minute = today.getMinutes()
     comment = if (hour == 4 and minute = 20) then ". Blaze It :mary_jane:" else ""

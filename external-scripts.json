@@ -13,5 +13,6 @@
   "hubot-ambush",
   "hubot-reload-scripts",
   "hubot-google",
-  "hubot-coin"
+  "hubot-coin",
+  "hubot-fliptable"
 ]
