@@ -7,8 +7,42 @@
 #   Uncomment the ones you want to try and experiment with.
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
+daylist = [ 
+  'Sunday '  
+  'Monday '  
+  'Tuesday '  
+  'Wednesday '  
+  'Thursday '  
+  'Friday '  
+  'Saturday '  
+]
+
+monthlist = [ 
+  'January '
+  'February '
+  'March '
+  'April '
+  'May '
+  'June '
+  'July '
+  'August '
+  'September '
+  'October '
+  'November '
+  'December '
+]  
 
 module.exports = (robot) ->
+  robot.respond /TIME$/i, (msg) ->
+    today = new Date()
+    year = day.getYear()  + " "
+    month = monthlist[date.getMonth()] + " "
+    date = date.getDate() + ", "
+    day = daylist[today.getDay()]
+    hour = today.getHours() + ":"
+    minute = today.getMinutes()
+    comment = if (hour == 4 and minute = 20) then ". Blaze It :mary_jane:" else ""
+    msg.send "Server time is: " + day + month + date  + year + hour + minute + comment
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
