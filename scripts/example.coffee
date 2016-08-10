@@ -41,7 +41,7 @@ module.exports = (robot) ->
     day = daylist[today.getDay()] + ", "
     hour = (today.getHours()) % 12
     minute = today.getMinutes()
-    comment = if (hour == 4 and minute = 20) then ". Blaze It :mary_jane:" else ""
+    comment = if (hour == 4 and minute == 20) then ". Blaze It :mary_jane:" else ""
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minute + comment
 
   # robot.hear /badger/i, (res) ->
