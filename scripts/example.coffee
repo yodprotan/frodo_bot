@@ -34,7 +34,7 @@ monthlist = [
 
 module.exports = (robot) ->
   robot.respond /TIME$/i, (msg) ->
-    today = new Date().setUTCDate(15);
+    today = new Date().setUTCDate(15)
     year = today.getFullYear()  + " "
     month = monthlist[today.getMonth()] + " "
     date = today.getDate() + ", "
