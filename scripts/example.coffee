@@ -36,7 +36,7 @@ module.exports = (robot) ->
   robot.respond /TIME$/i, (msg) ->
     today_utc = new Date()
     today = today_utc.setUTCDate(15)
-    year = today.getFullYear()  + " "
+    year = 2017 #today.getFullYear()  + " "
     month = monthlist[today.getMonth()] + " "
     date = today.getDate() + ", "
     day = daylist[today.getDay()] + ", "
