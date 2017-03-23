@@ -123,7 +123,7 @@ module.exports = (robot) ->
   #   if res?
   #     res.reply "DOES NOT COMPUTE"
   #
-  robot.respond /bloodoath (#*): (.*)/i, (res) ->
+  robot.respond /bloodoath (.*): (.*)/i, (res) ->
     # Get number of sodas had (coerced to a number).
     pact_number = res.match[1]
     pact = res.match[2]
