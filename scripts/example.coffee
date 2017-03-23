@@ -128,7 +128,7 @@ module.exports = (robot) ->
     pact_number = res.match[1]
     pact = res.match[2]
     previous_pact = robot.brain.get(pact_number) or false
-  
+    res.send "#{pact} #{pact_number} #{previous_pact}"
     if previous_pact
       res.reply "There is a pact in progress"
   
