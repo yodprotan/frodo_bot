@@ -35,8 +35,8 @@ monthlist = [
 module.exports = (robot) ->
   robot.respond /TIME$/i, (msg) ->
     today_utc = new Date()
-    today = today_utc.setUTCDate(15)
-    year = 2017 #today.getFullYear()  + " "
+    today = new Date(today_utc.getTime() + (today_utc.getTimezoneOffset() * 60 * 1000))
+    year = today.getFullYear()  + " "
     month = monthlist[today.getMonth()] + " "
     date = today.getDate() + ", "
     day = daylist[today.getDay()] + ", "
