@@ -45,7 +45,7 @@ module.exports = (robot) ->
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minute + comment
 
    robot.hear /the pact is writ/i, (res) ->
-     res.send ":pogchamp:"
+     res.emote ":pogchamp: :pogchamp: :pogchamp:"
   
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
