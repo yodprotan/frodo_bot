@@ -31,16 +31,15 @@ monthlist = [
   'November'
   'December'
 ]  
-
+(today_utc.getTimezoneOffset() * 60 * 1000))
 module.exports = (robot) ->
   robot.respond /TIME$/i, (msg) ->
-    today_utc = new Date()
-    today = new Date(today_utc.getTime() + (today_utc.getTimezoneOffset() * 60 * 1000))
+    today = new Date()
     year = today.getFullYear()  + " "
     month = monthlist[today.getMonth()] + " "
     date = today.getDate() + ", "
     day = daylist[today.getDay()] + ", "
-    hour = today.getHours() % 12
+    hour = (today.getHours()+today.getTimezoneOffset()/60) % 12
     minute = today.getMinutes()
     comment = if (hour == 4 and minute == 20) then ". Blaze It :mary_jane:" else ""
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minute + comment
