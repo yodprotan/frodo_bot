@@ -127,7 +127,7 @@ module.exports = (robot) ->
     # Get number of sodas had (coerced to a number).
     pact_number = res.match[1]
     pact = res.match[2]
-    previous_pact = robot.brain.get(pact_number)
+    previous_pact = robot.brain.get(pact_number) or false
   
     if previous_pact
       res.reply "There is a pact in progress"
