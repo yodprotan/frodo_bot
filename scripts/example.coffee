@@ -123,18 +123,20 @@ module.exports = (robot) ->
   #   if res?
   #     res.reply "DOES NOT COMPUTE"
   #
-  # robot.respond /have a soda/i, (res) ->
-  #   # Get number of sodas had (coerced to a number).
-  #   sodasHad = robot.brain.get('totalSodas') * 1 or 0
-  #
-  #   if sodasHad > 4
-  #     res.reply "I'm too fizzy.."
-  #
-  #   else
-  #     res.reply 'Sure!'
-  #
-  #     robot.brain.set 'totalSodas', sodasHad+1
-  #
+  robot.respond /bloodoath (#*): (*)/i, (res) ->
+    # Get number of sodas had (coerced to a number).
+    pact_number = res.match[1]
+    pact = res.match[2]
+    previous_pact = robot.brain.get(pact_number)
+  
+    if previous_pact
+      res.reply "There is a pact in progress"
+  
+    else
+      res.reply 'Sure!'
+  
+      robot.brain.set pact_number, pact
+  
   # robot.respond /sleep it off/i, (res) ->
   #   robot.brain.set 'totalSodas', 0
   #   res.reply 'zzzzz'
