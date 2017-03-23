@@ -123,19 +123,15 @@ module.exports = (robot) ->
   #   if res?
   #     res.reply "DOES NOT COMPUTE"
   #
-  robot.respond /bloodoath (.*): (.*)/i, (res) ->
+  robot.respond /bloodoath (.*)/i, (res) ->
     # Get number of sodas had (coerced to a number).
-    pact_number = res.match[1]
-    pact = res.match[2]
-    previous_pact = robot.brain.get(pact_number) or false
-    res.reply "#{pact} #{pact_number} #{previous_pact}"
-    if previous_pact
-      res.reply "There is a pact in progress"
+    pact = res.match[1]
+    pacts = robot.brain.get('pacts') or []
+    res.reply "#{pact} is writ"
+    
+    pacts.push pact 
   
-    else
-      res.reply 'Sure!'
-  
-      robot.brain.set pact_number, pact
+    robot.brain.set 'pacts', pacts
   
   # robot.respond /sleep it off/i, (res) ->
   #   robot.brain.set 'totalSodas', 0
