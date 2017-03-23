@@ -31,7 +31,7 @@ monthlist = [
   'November'
   'December'
 ]  
-(today_utc.getTimezoneOffset() * 60 * 1000))
+
 module.exports = (robot) ->
   robot.respond /TIME$/i, (msg) ->
     today = new Date()
