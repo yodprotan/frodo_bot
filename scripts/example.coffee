@@ -40,7 +40,8 @@ module.exports = (robot) ->
     date = today.getDate() + ", "
     day = daylist[today.getDay()] + ", "
     hour = today.getHours() % 12
-    minute = today.getMinutes().toFixed 0
+    minute = today.getMinutes()
+    minutes = minutes > 9 ? "" + minutes: "0" + minutes;
     comment = if (hour == 4 and minute == 20) then ". Blaze It :mary_jane:" else ""
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minute + comment
 
