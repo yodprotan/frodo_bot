@@ -129,7 +129,7 @@ module.exports = (robot) ->
     pacts = robot.brain.get('pacts') or []
     res.reply "#{pact} is writ"
     
-    pacts.push pact 
+    # pacts.push pact 
   
     robot.brain.set 'pacts', pacts
   
