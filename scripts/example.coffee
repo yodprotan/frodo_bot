@@ -45,8 +45,11 @@ module.exports = (robot) ->
     comment = if (hour == 4 and minute == 20) then ". Blaze It :mary_jane:" else ""
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minute + comment
 
-   robot.hear /the pact is writ/i, (res) ->
-     res.emote ":pogchamp: :pogchamp: :pogchamp:"
+  robot.hear /the pact is writ/i, (res) ->
+    res.emote ":pogchamp: :pogchamp: :pogchamp:"
+
+  robot.hear /roo/i, (res) ->
+    res.emote "ROO ROO ROO :frodo:"
   
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
