@@ -144,8 +144,7 @@ module.exports = (robot) ->
   
   robot.respond /^list bloodoaths$/i, (res) ->
     pacts = robot.brain.get('pacts') or []
-    res.reply pacts.join("\n")
-
+    res.reply pacts[0]
     
   
   # robot.respond /sleep it off/i, (res) ->
