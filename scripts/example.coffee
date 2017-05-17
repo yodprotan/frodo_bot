@@ -137,8 +137,8 @@ module.exports = (robot) ->
     pact = res.match[1]
     pacts = robot.brain.data.pacts or []
     pacts.push pact
-    robot.brain.set 'pacts', pacts
-    res.reply "#{pact} is writ"
+    robot.brain.data.pacts = pacts
+    res.reply "'#{pact}' is writ"
     
     # pacts.push pact 
   
