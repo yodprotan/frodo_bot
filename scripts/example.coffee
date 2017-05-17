@@ -134,14 +134,18 @@ module.exports = (robot) ->
   #     res.reply "DOES NOT COMPUTE"
   #
   robot.hear /^bloodoath (.*)$/i, (res) ->
-    # Get number of sodas had (coerced to a number).
     pact = res.match[1]
-    pacts = robot.brain.get('pacts') or []
+    pacts = robot.brain.data.pacts or []
+    pacts.push pact
     robot.brain.set 'pacts', pacts
     res.reply "#{pact} is writ"
     
     # pacts.push pact 
   
+  robot.hear /^list bloodoaths$/i, (res) ->
+    pacts = robot.brain.data.pacts
+    res.send pacts.join("\n")
+
     
   
   # robot.respond /sleep it off/i, (res) ->
