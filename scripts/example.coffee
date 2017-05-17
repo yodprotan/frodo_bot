@@ -53,6 +53,9 @@ module.exports = (robot) ->
 
   robot.hear /shrug/i, (res) ->
     res.emote "¯\\_(ツ)_/¯"
+
+  robot.hear /magic/i, (res) ->
+    res.emote "(＠・｀ω・)v☆+ ﾟ .+ .ﾟ.ﾟ｡ ﾟ ｡. +ﾟ ｡ﾟ.ﾟ｡☆*｡｡ . ｡ o .｡ﾟ｡.o｡* ｡ .｡"
   
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
