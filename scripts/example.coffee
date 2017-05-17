@@ -52,7 +52,7 @@ module.exports = (robot) ->
     res.emote "ROO ROO ROO :frodo:"
 
   robot.hear /shrug/i, (res) ->
-    res.emote "¯\_(ツ)_/¯"
+    res.emote "¯\\_(ツ)_/¯"
   
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
