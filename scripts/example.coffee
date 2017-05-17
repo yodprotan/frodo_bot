@@ -144,7 +144,7 @@ module.exports = (robot) ->
   
   robot.hear /^list bloodoaths$/i, (res) ->
     pacts = robot.brain.data.pacts
-    res.send pacts.join("\n")
+    res.reply pacts.join("\n")
 
     
   
