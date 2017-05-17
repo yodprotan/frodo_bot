@@ -142,9 +142,9 @@ module.exports = (robot) ->
     
     # pacts.push pact 
   
-  robot.hear /^list bloodoaths$/i, (res) ->
+  robot.respond /^list bloodoaths$/i, (msg) ->
     pacts = robot.brain.data.pacts
-    res.reply pacts.join("\n")
+    msg.send pacts.join("\n")
 
     
   
