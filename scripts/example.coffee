@@ -133,7 +133,7 @@ module.exports = (robot) ->
   #   if res?
   #     res.reply "DOES NOT COMPUTE"
   #
-  robot.respond /^bloodoath (.*)$/i, (res) ->
+  robot.hear /^bloodoath (.*)$/i, (res) ->
     # Get number of sodas had (coerced to a number).
     pact = res.match[1]
     pacts = robot.brain.get('pacts') or []
