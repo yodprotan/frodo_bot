@@ -136,8 +136,8 @@ module.exports = (robot) ->
   robot.hear /^bloodoath (.*)$/i, (res) ->
     pact = res.match[1]
     pacts = robot.brain.get('pacts') or []
-    pacts.push pact
-    robot.brain.set 'pacts', pacts
+    pacts.append(pact)
+    robot.brain.set('pacts', pacts)
     res.reply "'#{pact}' is writ"
     
     # pacts.push pact 
