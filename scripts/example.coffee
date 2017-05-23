@@ -78,7 +78,7 @@ class Bloodoath
 module.exports = (robot) ->
   bloodoath = new Bloodoath robot
 
-  robot.respond /^list bloodoaths$/i, (msg) ->
+  robot.hear /^list bloodoaths$/i, (msg) ->
     pacts = bloodoath.get
     msg.send pacts[0]
 
