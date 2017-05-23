@@ -80,12 +80,12 @@ module.exports = (robot) ->
 
   robot.hear /^list bloodoaths$/i, (msg) ->
     pacts = bloodoath.get
-    msg.send pacts[0]
+    msg.reply pacts[0]
 
   robot.hear /^bloodoath (.*)$/i, (msg) ->
     pact = msg.match[1]
     bloodoath.write pact
-    msg.send "'#{pact}' is writ"
+    msg.reply "'#{pact}' is writ"
     
     # pacts.push pact 
   
