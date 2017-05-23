@@ -69,7 +69,7 @@ class Bloodoath
 
 
   write: (pact) ->
-    @pacts.push(pact)
+    @pacts.push pact
     @robot.brain.data.pacts = @pacts
 
   get: ->
@@ -82,10 +82,10 @@ module.exports = (robot) ->
     pacts = bloodoath.get
     msg.send pacts[0]
 
-  robot.hear /^bloodoath (.*)$/i, (res) ->
-    pact = res.match[1]
+  robot.hear /^bloodoath (.*)$/i, (msg) ->
+    pact = msg.match[1]
     bloodoath.write pact
-    res.reply "'#{pact}' is writ"
+    msg.send "'#{pact}' is writ"
     
     # pacts.push pact 
   
