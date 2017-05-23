@@ -15,6 +15,10 @@ class Bloodoath
   get: ->
     return @pacts
 
+  remove_all: ->
+    @pacts=[]
+    @robot.brain.data.pacts = @pacts
+
 module.exports = (robot) ->
   bloodoath = new Bloodoath robot
 
@@ -27,4 +31,6 @@ module.exports = (robot) ->
     bloodoath.write pact
     msg.reply "'#{pact}' is writ"
     
-    # pacts.push pact 
+  robot.hear /^clear bloodoaths$/i, (msg) ->
+    pacts = bloodoath.remove_all()
+    msg.reply "All pacts have been marked settled"
