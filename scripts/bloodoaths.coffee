@@ -16,7 +16,7 @@ class Bloodoath
     return @pacts
 
   remove_all: ->
-    @pacts=[]
+    @pacts = []
     @robot.brain.data.pacts = @pacts
 
 module.exports = (robot) ->
