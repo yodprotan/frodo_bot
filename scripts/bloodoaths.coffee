@@ -20,7 +20,7 @@ class Bloodoath
     @robot.brain.data.pacts = @pacts
 
   remove_one: (number) ->
-    @pacts.splice(number, 1)
+    @pacts = @pacts.splice(number, 1)
     @robot.brain.data.pacts = @pacts
 
 module.exports = (robot) ->
