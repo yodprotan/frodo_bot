@@ -45,5 +45,5 @@ module.exports = (robot) ->
 
   robot.hear /^settle (.*)$/i, (msg) ->
     number = msg.match[1]
-    bloodoath.remove(number)
+    bloodoath.remove_one(number)
     msg.reply "Pact #{number} has been settled"
