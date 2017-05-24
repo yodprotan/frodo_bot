@@ -19,12 +19,20 @@ class Bloodoath
     @pacts = []
     @robot.brain.data.pacts = @pacts
 
+  remove_one: (number) ->
+    @pacts.splice(number, 1)
+    @robot.brain.data.pacts = @pacts
+
 module.exports = (robot) ->
   bloodoath = new Bloodoath robot
 
   robot.hear /^list bloodoaths$/i, (msg) ->
     pacts = bloodoath.get()
-    msg.reply pacts
+    verbiage = ["Pacts"]
+    for pact, index in pacts
+      verbiage.push "#{index + 1}. #{pact}"
+    msg.send verbiage.join("\n")
+
 
   robot.hear /^bloodoath (.*)$/i, (msg) ->
     pact = msg.match[1]
@@ -32,5 +40,10 @@ module.exports = (robot) ->
     msg.reply "'#{pact}' is writ"
     
   robot.hear /^clear bloodoaths$/i, (msg) ->
-    pacts = bloodoath.remove_all()
+    bloodoath.remove_all()
     msg.reply "All pacts have been marked settled"
+
+  robot.hear /^settle (.*)$/i, (msg) ->
+    number = msg.match[1]
+    bloodoath.remove(number)
+    msg.reply "Pact #{number} has been settled"
