@@ -19,9 +19,13 @@ class Bloodoath
     @pacts = []
     @robot.brain.data.pacts = @pacts
 
-  remove_one: (number) ->
-    @pacts = @pacts.splice(number, 1)
-    @robot.brain.data.pacts = @pacts
+  remove_one: (msg, number) ->
+    if (!isNaN(parseFloat(number)) && isFinite(number))
+      @pacts = @pacts.splice(number, 1)
+      @robot.brain.data.pacts = @pacts
+      msg.reply "Pact #{number} has been settled"
+    
+    
 
 module.exports = (robot) ->
   bloodoath = new Bloodoath robot
@@ -32,7 +36,6 @@ module.exports = (robot) ->
     for pact, index in pacts
       verbiage.push "#{index + 1}. #{pact}"
     msg.send verbiage.join("\n")
-
 
   robot.hear /^bloodoath (.*)$/i, (msg) ->
     pact = msg.match[1]
@@ -45,5 +48,5 @@ module.exports = (robot) ->
 
   robot.hear /^settle (.*)$/i, (msg) ->
     number = msg.match[1]
-    bloodoath.remove_one(number)
-    msg.reply "Pact #{number} has been settled"
+    bloodoath.remove_one(msg, number)
+    
