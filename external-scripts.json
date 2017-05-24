@@ -3,7 +3,6 @@
   "hubot-heroku-keepalive",
   "hubot-google-images",
   "hubot-google-translate",
-  "hubot-pugme",
   "hubot-maps",
   "hubot-redis-brain",
   "hubot-rules",
@@ -14,5 +13,6 @@
   "hubot-google",
   "hubot-coin",
   "hubot-fliptable",
-  "hubot-dinosaur-comics"
+  "hubot-dinosaur-comics",
+  "hubot-xkcd"
 ]
