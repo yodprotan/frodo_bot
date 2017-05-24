@@ -20,8 +20,8 @@ class Bloodoath
     @robot.brain.data.pacts = @pacts
 
   remove_one: (msg, number) ->
-    if (!isNaN(parseFloat(number)) && isFinite(number) && number<@pacts.length)
-      @pacts = @pacts.splice(number, 1)
+    if (!isNaN(parseFloat(number)) && number<@pacts.length+1)
+      @pacts = @pacts.splice(number-1, 1)
       @robot.brain.data.pacts = @pacts
       msg.reply "Pact #{number} has been settled"
     
