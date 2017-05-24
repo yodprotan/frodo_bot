@@ -20,12 +20,13 @@ class Bloodoath
     @robot.brain.data.pacts = @pacts
 
   remove_one: (msg, number) ->
-    if (!isNaN(parseFloat(number)) && isFinite(number))
+    if (!isNaN(parseFloat(number)) && isFinite(number) && number<@pacts.length)
       @pacts = @pacts.splice(number, 1)
       @robot.brain.data.pacts = @pacts
       msg.reply "Pact #{number} has been settled"
     
-    
+    else
+      msg.reply "Please enter a valid pact number"
 
 module.exports = (robot) ->
   bloodoath = new Bloodoath robot
