@@ -56,6 +56,9 @@ module.exports = (robot) ->
 
   robot.hear /magic/i, (res) ->
     res.emote "(＠・｀ω・)v☆+ ﾟ .+ .ﾟ.ﾟ｡ ﾟ ｡. +ﾟ ｡ﾟ.ﾟ｡☆*｡｡ . ｡ o .｡ﾟ｡.o｡* ｡ .｡"
+
+  robot.hear /^thanks frodo$/i, (res) ->
+    res.emote "/me roos helpfully"
   
 
 
