@@ -32,6 +32,12 @@ monthlist = [
   'December'
 ]  
 
+find_comment: (hour, minute) ->
+  if (hour == 4 and minute = 20) 
+    return ". Blaze It :mary_jane:"
+  else if (hour == 3 and minute = 14)
+    return ". :pie:"
+    
 module.exports = (robot) ->
   robot.respond /TIME$/i, (msg) ->
     today = new Date()
@@ -42,7 +48,7 @@ module.exports = (robot) ->
     hour = today.getHours() % 12
     minute = today.getMinutes()
     minutes = minutes > 9 ? "" + minutes: "0" + minutes;
-    comment = if (hour == 4 and minute == 20) then ". Blaze It :mary_jane:" else ""
+    comment = find_comment(hour, minute)
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minute + comment
 
   robot.hear /the pact is writ/i, (res) ->
