@@ -35,8 +35,9 @@ monthlist = [
 find_comment = (hour, minute) ->
   if (hour == 4 and minute = 20) 
     return ". Blaze It :mary_jane:"
-  else if (hour == 3 and minute = 14)
+  if (hour == 3 and minute = 14)
     return ". :pie:"
+  return "."
 
 module.exports = (robot) ->
   robot.respond /TIME$/i, (msg) ->
