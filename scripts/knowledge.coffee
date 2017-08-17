@@ -8,8 +8,8 @@
 #   None
 #
 # Commands:
-#   hubot know that <subject> is <predicate> - Remember a piece of information
-#   hubot what is <subject> - Recalls a piece of information
+#   `hubot know that <subject> is <predicate>` - Remember a piece of information
+#   `hubot what is <subject>` - Recalls a piece of information
 
 
 class Knowledge
