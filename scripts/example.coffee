@@ -70,6 +70,9 @@ module.exports = (robot) ->
   robot.hear /deez nutz/i, (res) ->
     res.emote "@jon 8=======D" 
 
+  robot.hear /good boy/i, (res) ->
+    res.emote ":frodo:"
+
   
   
     
