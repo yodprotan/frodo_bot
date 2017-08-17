@@ -11,7 +11,7 @@
 #   list bloodoaths - return list of bets made
 #   bloodoath <oath> - adds a bet to the list of bets
 #   clear bloodoaths - forget all of the bets that have been made
-#   settle <number> - resolve a bet that has been made (based on list bloodoaths)
+#   settle <number> - resolve a bet that has been made (based on `list bloodoaths`)
 
 class Bloodoath
   
