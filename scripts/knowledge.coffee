@@ -17,4 +17,6 @@ module.exports = (robot) ->
   robot.hear /^know that (.*) is (.*)$/i, (msg) ->
     subject = msg.match[1]
     predicate = msg.match[2]
-    knoweldge.remember(msg, subject, predicate)
+    knolwedge.remember(msg, subject, predicate)
+
+  robot.hear 
