@@ -14,10 +14,10 @@ class Knowledge
   recall: (msg, subject) ->
     maybe_knowledge = @knowledge[subject]
     if maybe_knowledge
-      msg.reply "#{subject} is #{maybe_knowledge}"
+      msg.send "#{subject} is #{maybe_knowledge}"
 
     else
-      msg.reply "#{subject} is #{subject}"
+      msg.send "#{subject} is #{subject}"
 
 module.exports = (robot) ->
   knowledge = new Knowledge robot
