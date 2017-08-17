@@ -9,6 +9,7 @@ class Knowledge
 
   remember: (msg, subject, predicate) ->
     @knowledge[subject] = predicate
+    @robot.brain.data.knowledge = @knowledge
     msg.reply "Ok, #{subject} is #{predicate}"
 
   recall: (msg, subject) ->
