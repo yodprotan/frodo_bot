@@ -68,7 +68,7 @@ module.exports = (robot) ->
     res.emote "_roos helpfully_"
   
   robot.hear /dis nutt/i, (res) ->
-    res.emote "@jon 8=======D" 
+    res.emote "@jon o=======D" 
 
   robot.hear /good boy/i, (res) ->
     res.emote ":frodo:"
