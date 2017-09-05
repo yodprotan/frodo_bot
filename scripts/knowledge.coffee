@@ -9,7 +9,8 @@
 #
 # Commands:
 #   `frodo know that <subject> is <predicate>` - Remember a piece of information
-#   `frodo what is <subject>` - Recalls a piece of information
+#   `frodo what/who is <subject>` - Recalls a piece of information
+
 
 
 class Knowledge
