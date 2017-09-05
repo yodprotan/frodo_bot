@@ -22,12 +22,15 @@ class Knowledge
         @knowledge = @robot.brain.data.knowledge
 
   remember: (msg, subject, predicate) ->
-    @knowledge[subject] = predicate
+    @knowledge[subject.toLowerCase()] = predicate
     @robot.brain.data.knowledge = @knowledge
     msg.reply "Ok, #{subject} is #{predicate}"
 
   recall: (msg, subject) ->
-    maybe_knowledge = @knowledge[subject]
+    maybe_knowledge = @knowledge[subject.toLowerCase()]
+    if not maybe_knowledge
+      maybe_knowledge = @knowledge[subject]
+      
     if maybe_knowledge
       msg.send "#{subject} is #{maybe_knowledge}"
 
