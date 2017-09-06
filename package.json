@@ -30,7 +30,8 @@
     "hubot-soon": "^1.0.0",
     "hubot-thank-you": "0.0.3",
     "hubot-youtube": "^1.0.2",
-    "hubot-xkcd": "0.0.3"
+    "hubot-xkcd": "0.0.3",
+    "to-zalgo": "1.0.1"
   },
   "engines": {
     "node": "0.10.x"
