@@ -1,8 +1,11 @@
 # Description:
-#     INVOKE ZALGO
+#   INVOKE ZALGO
 #
+# Dependencies:
+#   to-zalgo
+# 
 # Commands:
-#     marley zalgo [text] - summon the power of Zalgo to infect some text
+#   `frodo zalgo [text]` - summon the power of Zalgo to infect some text
 
 zalgo = require 'to-zalgo'
 

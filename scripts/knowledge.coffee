@@ -41,15 +41,12 @@ class Knowledge
 module.exports = (robot) ->
   knowledge = new Knowledge robot
 
-  robot.respond /know that (.*) is (.*)$/i, (msg) ->
+  robot.respond /know that (.*) (is|are) (.*)$/i, (msg) ->
     subject = msg.match[1]
     predicate = msg.match[2]
     knowledge.remember(msg, subject, predicate)
 
-  robot.respond /what is (.*)$/i, (msg) ->
-    subject = msg.match[1]
-    knowledge.recall(msg, subject)
 
-  robot.respond /who is (.*)$/i, (msg) ->
+  robot.respond /(what|who) (is|are) (.*)$/i, (msg) ->
     subject = msg.match[1]
     knowledge.recall(msg, subject)
