@@ -43,10 +43,10 @@ module.exports = (robot) ->
 
   robot.respond /know that (.*) (is|are) (.*)$/i, (msg) ->
     subject = msg.match[1]
-    predicate = msg.match[2]
+    predicate = msg.match[3]
     knowledge.remember(msg, subject, predicate)
 
 
   robot.respond /(what|who) (is|are) (.*)$/i, (msg) ->
-    subject = msg.match[1]
+    subject = msg.match[3]
     knowledge.recall(msg, subject)
