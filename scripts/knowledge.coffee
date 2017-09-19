@@ -22,31 +22,33 @@ class Knowledge
       if @robot.brain.data.knowledge
         @knowledge = @robot.brain.data.knowledge
 
-  remember: (msg, subject, predicate) ->
+  remember: (msg, subject, verb, predicate) ->
     @knowledge[subject.toLowerCase()] = predicate
     @robot.brain.data.knowledge = @knowledge
-    msg.reply "Ok, #{subject} is #{predicate}"
+    msg.reply "Ok, #{subject} #{verb} #{predicate}"
 
-  recall: (msg, subject) ->
+  recall: (msg, verb, subject) ->
     maybe_knowledge = @knowledge[subject.toLowerCase()]
     if not maybe_knowledge
       maybe_knowledge = @knowledge[subject]
       
     if maybe_knowledge
-      msg.send "#{subject} is #{maybe_knowledge}"
+      msg.send "#{subject} #{verb} #{maybe_knowledge}"
 
     else
-      msg.send "#{subject} is #{subject}"
+      msg.send "#{subject} #{verb} #{subject}"
 
 module.exports = (robot) ->
   knowledge = new Knowledge robot
 
   robot.respond /know that (.*) (is|are) (.*)$/i, (msg) ->
     subject = msg.match[1]
+    verb = msg.match[2]
     predicate = msg.match[3]
-    knowledge.remember(msg, subject, predicate)
+    knowledge.remember(msg, subject, verb, predicate)
 
 
   robot.respond /(what|who) (is|are) (.*)$/i, (msg) ->
     subject = msg.match[3]
-    knowledge.recall(msg, subject)
+    verb = msg.match[2]
+    knowledge.recall(msg, verb, subject)
