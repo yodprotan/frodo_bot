@@ -48,7 +48,7 @@ module.exports = (robot) ->
     date = today.getDate() + ", "
     day = daylist[today.getDay()] + ", "
     hour = today.getHours() % 12
-    minute = today.getMinutes()
+    minute = ("0" + today.getMinutes()).slice(-2)
     minutes = minutes > 9 ? "" + minutes: "0" + minutes;
     comment = find_comment(hour, minute)
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minute + comment
