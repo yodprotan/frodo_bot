@@ -46,23 +46,23 @@ class Bloodoath
 module.exports = (robot) ->
   bloodoath = new Bloodoath robot
 
-  robot.respond /^list bloodoaths$/i, (msg) ->
+  robot.respond /list bloodoaths$/i, (msg) ->
     pacts = bloodoath.get()
     verbiage = ["Pacts"]
     for pact, index in pacts
       verbiage.push "#{index + 1}. #{pact}"
     msg.send verbiage.join("\n")
 
-  robot.respond /^bloodoath (.*)$/i, (msg) ->
+  robot.respond /bloodoath (.*)$/i, (msg) ->
     pact = msg.match[1]
     bloodoath.write pact
     msg.reply "'#{pact}' is writ"
     
-  robot.respond /^clear bloodoaths$/i, (msg) ->
+  robot.respond /clear bloodoaths$/i, (msg) ->
     bloodoath.remove_all()
     msg.reply "All pacts have been marked settled"
 
-  robot.respond /^settle (.*)$/i, (msg) ->
+  robot.respond /settle (.*)$/i, (msg) ->
     number = msg.match[1]
     bloodoath.remove_one(msg, number)
     
