@@ -48,10 +48,10 @@ module.exports = (robot) ->
     date = today.getDate() + ", "
     day = daylist[today.getDay()] + ", "
     hour = today.getHours() % 12
-    minute = ("0" + today.getMinutes()).slice(-2)
+    minute = today.getMinutes()
     minutes = minutes > 9 ? "" + minutes: "0" + minutes;
     comment = find_comment(hour, minute)
-    msg.send "Server time is: " + day + month + date + year + hour  + ":" + minute + comment
+    msg.send "Server time is: " + day + month + date + year + hour  + ":" + minutes + comment
 
   robot.hear /the pact is writ/i, (res) ->
     res.emote ":pogchamp: :pogchamp: :pogchamp:"
