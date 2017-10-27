@@ -74,8 +74,10 @@ module.exports = (robot) ->
   robot.hear /good boy/i, (res) ->
     res.emote ":frodo:"
 
+  robot.hear /^do(do)+$/i, (res) ->
+    res.emote "roorooroo"
   
-  
-    
+  robot.respond /^no$/i, (res) ->
+    res.emote "_whimpers_"
   
 
