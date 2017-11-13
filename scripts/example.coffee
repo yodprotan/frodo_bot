@@ -56,7 +56,7 @@ module.exports = (robot) ->
   robot.hear /the pact is writ/i, (res) ->
     res.emote ":pogchamp: :pogchamp: :pogchamp:"
 
-  robot.hear /^roo$/i, (res) ->
+  robot.hear /^ro(o)+$/i, (res) ->
     res.emote "ROO ROO ROO :frodo:"
 
   robot.hear /shrug/i, (res) ->
