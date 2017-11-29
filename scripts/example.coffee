@@ -1,4 +1,4 @@
-# Description:
+﻿# Description:
 #   Example scripts for you to examine and try out.
 #
 # Notes:
@@ -57,7 +57,7 @@ module.exports = (robot) ->
     res.emote ":pogchamp: :pogchamp: :pogchamp:"
 
   robot.hear /^ro(o)+$/i, (res) ->
-    res.emote "ROO ROO ROO :frodo:"
+    res.emote "ROO POOP ROO :frodo:"
 
   robot.hear /shrug/i, (res) ->
     res.emote "¯\\_(ツ)_/¯"
