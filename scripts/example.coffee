@@ -57,7 +57,7 @@ module.exports = (robot) ->
     res.emote ":pogchamp: :pogchamp: :pogchamp:"
 
   robot.hear /^ro(o)+$/i, (res) ->
-    res.emote "ROO POOP ROO :frodo:"
+    res.emote "ROO ROO ROO :frodo:"
 
   robot.hear /shrug/i, (res) ->
     res.emote "¯\\_(ツ)_/¯"
