@@ -60,7 +60,7 @@ module.exports = (robot) ->
     res.emote "ROO ROO ROO :frodo:"
 
   robot.hear /shrug/i, (res) ->
-    res.emote "¯\\_:jack_o_lantern:_/¯"
+    res.emote "¯\\_(ツ)_/¯"
 
   robot.hear /^magic$/i, (res) ->
     res.emote "(＠・｀ω・)v☆+ ﾟ .+ .ﾟ.ﾟ｡ ﾟ ｡. +ﾟ ｡ﾟ.ﾟ｡☆*｡｡ . ｡ o .｡ﾟ｡.o｡* ｡ .｡"
