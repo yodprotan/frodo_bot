@@ -29,14 +29,14 @@ class Rollcalls
             return @cache[group]
         return []
 
-    add_to_group: (msg user, group) ->
+    add_to_group: (msg, user, group) ->
         console.log 'adding ' + user + ' to group ' + group
         if not @cache[group]:
             @cache[group] = []
         @cache[group].push user
         @robot.brain.data.groups = @cache
 
-    remove_from_group: (msg user, group) ->
+    remove_from_group: (msg, user, group) ->
         console.log 'removing ' + user + ' from group ' + group
         if not @cache[group]:
             msg.send "This group doesn't exist!"
