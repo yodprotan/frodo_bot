@@ -19,7 +19,7 @@ class Rollcalls
         @cache[group] = []
         @robot.brain.data.groups = @cache
 
-    clear: (group) ->
+    remove_group: (group) ->
         console.log 'removing group: ' + group
         delete @cache[group]; 
         @robot.brain.data.groups = @cache
@@ -90,6 +90,10 @@ module.exports = (robot) ->
     robot.respond /group (.*)$/i, (msg) ->
         group = msg.match[1]
         users = rollcalls.get(group)
+
+        if @users.length < 1
+            msg.send "This group is empty!"
+            return
         verbiage = ["Users"]
         for user, index in users
             verbiage.push "#{index + 1}. #{user}"
@@ -99,6 +103,15 @@ module.exports = (robot) ->
         user = msg.match[1]
         group = msg.match[2]
         rollcalls.add_to_group(msg, user, group)
+
+    robot.respond /remove (.*) from (.*)$/i, (msg) ->
+        user = msg.match[1]
+        group = msg.match[2]
+        rollcalls.remove_from_group(msg, user, group)
+
+    robot.respond /remove group (.*)$/i, (msg) ->
+        group = msg.match[1]
+        rollcalls.remove_group(group)
 
     
     # robot.respond /rollcall (\d+)/i, (msg) ->
