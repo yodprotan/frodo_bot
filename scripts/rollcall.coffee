@@ -88,6 +88,7 @@ module.exports = (robot) ->
     rollcalls = new Rollcalls robot
 
     robot.respond /group (.*)$/i, (msg) ->
+        group = msg.match[1]
         users = rollcalls.get(group)
         verbiage = ["Users"]
         for user, index in users
