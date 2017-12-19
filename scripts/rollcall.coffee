@@ -47,7 +47,7 @@ class Rollcalls
             return
         
         @cache[group].splice(index_of_user, 1)
-        robot.brain.data.groups = @cache
+        @robot.brain.data.groups = @cache
 
 rollcall = null
 # structure (when not null):
@@ -103,15 +103,18 @@ module.exports = (robot) ->
         user = msg.match[1]
         group = msg.match[2]
         rollcalls.add_to_group(msg, user, group)
+        msg.send 'adding ' + user + ' to group ' + group
 
     robot.respond /remove (.*) from (.*)$/i, (msg) ->
         user = msg.match[1]
         group = msg.match[2]
         rollcalls.remove_from_group(msg, user, group)
+        msg.send 'removing ' + user + ' from group ' + group
 
     robot.respond /remove group (.*)$/i, (msg) ->
         group = msg.match[1]
         rollcalls.remove_group(group)
+        msg.send 'removing group ' + group
 
     
     # robot.respond /rollcall (\d+)/i, (msg) ->
