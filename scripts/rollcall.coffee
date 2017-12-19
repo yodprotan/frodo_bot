@@ -91,7 +91,7 @@ module.exports = (robot) ->
         group = msg.match[1]
         users = rollcalls.get(group)
 
-        if @users.length < 1
+        if users.length < 1
             msg.send "This group is empty!"
             return
         verbiage = ["Users"]
