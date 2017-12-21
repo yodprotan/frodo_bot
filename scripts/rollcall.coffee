@@ -135,10 +135,11 @@ module.exports = (robot) ->
         users = rollcalls.get(group)
         console.log "number " + number
         console.log "users " + users.length
+
         if isNaN(parseFloat(number)) or number<1
             msg.send "Please enter a valid number"
             return
-        else if number<users.length
+        else if number>users.length
             msg.send "Not enough people in group!"
             return
 
