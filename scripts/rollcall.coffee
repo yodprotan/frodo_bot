@@ -33,6 +33,10 @@ class Rollcalls
         console.log 'adding ' + user + ' to group ' + group
         if not @cache[group]
             @cache[group] = []
+        index_of_user = @cache[group].indexOf(user)
+        if index_of_user
+            msg.send "User is already in group!"
+            return
         @cache[group].push user
         @robot.brain.data.groups = @cache
 
@@ -73,7 +77,6 @@ cleanup_rollcall = ->
 
 get_responders_string = (requests) ->
     return null unless requests.length
-    users = (user for user in requests).unique()
     response = "#{users.join(' ')}"
     return response
     return unless rollcall
