@@ -50,7 +50,7 @@ class Rollcalls
         @robot.brain.data.groups = @cache
 
     start_rollcall: (group, number) ->
-        if !isNaN(parseFloat(number)):
+        if !isNaN(parseFloat(number))
             msg.send "Please enter a valid number"
             return
         else if number<@cache[group].length && number>0
