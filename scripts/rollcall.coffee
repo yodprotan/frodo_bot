@@ -1,8 +1,12 @@
 # Description:
-#     Allow marley to check if people are ready for league
+#     Allow frodo to check if people are ready for league or whatever
 # Commands:
-#     marley rollcall <group> for <number>
-#     marley stop rollcall
+#     frodo group <group>
+#     frodo add <user> to <group>
+#     frodo remove <user> from <group>
+#     frodo remove group <group>
+#     frodo rollcall <group> for <number>
+#     frodo stop rollcall
 #     user is here
 
 class Rollcalls
@@ -72,7 +76,7 @@ get_responders_string = (users) ->
     requests = []
     for user in users
         requests.push '@' + user
-    response = requests.join(' ')
+    response = requests.join('\n')
 
     return response
     return unless rollcall
@@ -182,7 +186,6 @@ module.exports = (robot) ->
 
     robot.hear /^([A-Za-z]+) is ready$/i, (msg) ->
         user = msg.match[1]
-        console.log "attempting to mark user as ready " + user
         readyhandler user, msg
 
     robot.hear /./i, (msg) ->
