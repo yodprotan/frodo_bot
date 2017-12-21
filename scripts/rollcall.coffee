@@ -68,8 +68,11 @@ cleanup_rollcall = ->
     clearInterval rollcall.interval
     rollcall = null
 
-get_responders_string = (requests) ->
-    return null unless requests.length
+get_responders_string = (users) ->
+    return null unless users.length
+    requests = []
+    for user in users
+        requests.push '@' + user
     response = requests.join(' ')
     console.log 'response is ' + response
     return response
