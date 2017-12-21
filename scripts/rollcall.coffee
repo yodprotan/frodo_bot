@@ -132,14 +132,16 @@ module.exports = (robot) ->
     robot.respond /rollcall (.*) for (.*)/i, (msg) ->
         group = msg.match[1]
         number = msg.match[2]
+        users = rollcalls.get(group)
+
         if isNaN(parseFloat(number)) or number<1
             msg.send "Please enter a valid number"
             return
-        else if number<@cache[group].length
+        else if number<users.length
             msg.send "Not enough people in group!"
             return
 
-        users = rollcalls.get(group)
+        
         requests = []
         for user in users
             user = user.toLowerCase()
