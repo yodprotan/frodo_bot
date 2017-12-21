@@ -34,14 +34,13 @@ class Rollcalls
         if not @cache[group]
             @cache[group] = []
         index_of_user = @cache[group].indexOf(user)
-        console.log 'index of user ' + @cache[group] 
-        console.log 'index of user ' + @cache[group] 
+
         if index_of_user >=0
             msg.send "User is already in group!"
             return
         @cache[group].push user
         @robot.brain.data.groups = @cache
-        console.log 'adding ' + user + ' to group ' + group
+        msg.send 'adding ' + user + ' to group ' + group
 
     remove_from_group: (msg, user, group) ->
         if not @cache[group]
@@ -54,7 +53,7 @@ class Rollcalls
         
         @cache[group].splice(index_of_user, 1)
         @robot.brain.data.groups = @cache
-        console.log 'removing ' + user + ' from group ' + group
+        msg.send 'removing ' + user + ' from group ' + group
 
 rollcall = null
 # structure (when not null):
@@ -74,16 +73,17 @@ get_responders_string = (users) ->
     for user in users
         requests.push '@' + user
     response = requests.join(' ')
-    console.log 'response is ' + response
+
     return response
     return unless rollcall
 
 remove_user = (requests, user) ->
     idx = 0
-    console.log 'marking user as ready: ' + user
+    
     while idx < requests.length
         if requests[idx] is user
             requests.splice idx, 1
+            console.log 'marking user as ready: ' + user
             return true
         else
             idx++
@@ -180,13 +180,15 @@ module.exports = (robot) ->
     robot.respond /stop rollcall/i, stop_rollcall
     robot.respond /rollcall stop/i, stop_rollcall
 
+    robot.hear /^([A-Za-z]+) is ready$/i, (msg) ->
+        user = msg.match[1]
+        readyhandler user, msg
+
     robot.hear /./i, (msg) ->
         user = msg.message.user.name.replace(/[^A-Za-z]*([A-Za-z]+).*/g, '$1')
         readyhandler user, msg
 
-    robot.hear /^([A-Za-z]+) is ready$/i, (msg) ->
-        user = msg.match[1]
-        readyhandler user, msg
+
 
     robot.respond /rollcall status/i, (msg) ->
         unless rollcall
