@@ -34,6 +34,7 @@ class Rollcalls
         if not @cache[group]
             @cache[group] = []
         index_of_user = @cache[group].indexOf(user)
+        console.log 'index of user ' + index_of_user
         if index_of_user
             msg.send "User is already in group!"
             return
@@ -52,16 +53,6 @@ class Rollcalls
         
         @cache[group].splice(index_of_user, 1)
         @robot.brain.data.groups = @cache
-
-    start_rollcall: (msg, group, number) ->
-        if isNaN(parseFloat(number))
-            msg.send "Please enter a valid number"
-            return
-        else if number<@cache[group].length && number>0
-            msg.send "Not enough people in group!"
-            return
-        else
-            msg.send ""
 
 rollcall = null
 # structure (when not null):
@@ -142,7 +133,13 @@ module.exports = (robot) ->
     robot.respond /rollcall (.*) for (.*)/i, (msg) ->
         group = msg.match[1]
         number = msg.match[2]
-        rollcalls.start_rollcall(msg, group, number)
+        if isNaN(parseFloat(number)) or number<1
+            msg.send "Please enter a valid number"
+            return
+        else if number<@cache[group].length
+            msg.send "Not enough people in group!"
+            return
+
         users = rollcalls.get(group)
         requests = []
         for user in users
