@@ -76,7 +76,7 @@ get_responders_string = (users) ->
     requests = []
     for user in users
         requests.push '@' + user
-    response = requests.join('\n')
+    response = requests.join(' ')
 
     return response
     return unless rollcall
@@ -136,6 +136,11 @@ module.exports = (robot) ->
     robot.respond /remove group (.*)$/i, (msg) ->
         group = msg.match[1]
         rollcalls.remove_group(group)
+
+    robot.respond /add me to (.*)$/i, (msg) ->
+        group = msg.match[1]
+        user = msg.message.user.name.replace(/[^A-Za-z]*([A-Za-z]+).*/g, '$1')
+        rollcalls.add_to_group(msg, user, group)
 
     
     robot.respond /rollcall (.*) for (.*)/i, (msg) ->
