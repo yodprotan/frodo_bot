@@ -30,29 +30,31 @@ class Rollcalls
         return []
 
     add_to_group: (msg, user, group) ->
-        console.log 'adding ' + user + ' to group ' + group
+        
         if not @cache[group]
             @cache[group] = []
         index_of_user = @cache[group].indexOf(user)
-        console.log 'index of user ' + index_of_user
-        if index_of_user
+        console.log 'index of user ' + @cache[group] 
+        console.log 'index of user ' + @cache[group] 
+        if index_of_user >=0
             msg.send "User is already in group!"
             return
         @cache[group].push user
         @robot.brain.data.groups = @cache
+        console.log 'adding ' + user + ' to group ' + group
 
     remove_from_group: (msg, user, group) ->
-        console.log 'removing ' + user + ' from group ' + group
         if not @cache[group]
             msg.send "This group doesn't exist!"
             return
         index_of_user = @cache[group].indexOf(user)
-        if not index_of_user
+        if index_of_user < 0
             msg.send "The user " + user + " is not in group: " + group
             return
         
         @cache[group].splice(index_of_user, 1)
         @robot.brain.data.groups = @cache
+        console.log 'removing ' + user + ' from group ' + group
 
 rollcall = null
 # structure (when not null):
@@ -73,13 +75,12 @@ get_responders_string = (requests) ->
     return response
     return unless rollcall
 
-remove_user = (requests, user, numberLeft) ->
+remove_user = (requests, user) ->
     idx = 0
     console.log 'marking user as ready: ' + user
     while idx < requests.length
         if requests[idx] is user
             requests.splice idx, 1
-            numberLeft--
             return true
         else
             idx++
@@ -88,7 +89,7 @@ remove_user = (requests, user, numberLeft) ->
 
 readyhandler = (user, msg) ->
     return unless rollcall
-    succ = remove_user rollcall.requests, user.toLowerCase(), rollcall.numberLeft
+    succ = remove_user rollcall.requests, user.toLowerCase()
     if succ
         rollcall.numberLeft--
 
