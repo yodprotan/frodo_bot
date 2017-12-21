@@ -53,7 +53,7 @@ class Rollcalls
         if !isNaN(parseFloat(number)):
             msg.send "Please enter a valid number"
             return
-        else if number<@cache[group].length && number>0)
+        else if number<@cache[group].length && number>0
             msg.send "Not enough people in group!"
             return
         else
