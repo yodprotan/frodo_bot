@@ -54,9 +54,7 @@ class Rollcalls
         @robot.brain.data.groups = @cache
 
     start_rollcall: (msg, group, number) ->
-        if !isNaN(parseFloat(number))
-            console.log 'number is ' + number
-            console.log 'number is ' + isNaN(parseFloat(number))
+        if isNaN(parseFloat(number))
             msg.send "Please enter a valid number"
             return
         else if number<@cache[group].length && number>0
@@ -79,23 +77,26 @@ cleanup_rollcall = ->
 
 get_responders_string = (requests) ->
     return null unless requests.length
-    response = "#{requests.join(' ')}"
+    response = requests.join(' ')
     console.log 'response is ' + response
     return response
     return unless rollcall
 
 remove_user = (requests, user, numberLeft) ->
     idx = 0
+    console.log 'marking user as ready: ' + user
     while idx < requests.length
         if requests[idx] is user
             requests.splice idx, 1
             numberLeft--
+            console.log "numleft " + numberLeft 
         else
             idx++
 
 readyhandler = (user, msg) ->
     return unless rollcall
     remove_user rollcall.requests, user.toLowerCase(), rollcall.numberLeft
+    console.log "numleft " + numberLeft 
     if rollcall.requests.length is 0 or rollcall.numberLeft is 0
         msg.send "That's it! We're all ready to go!"
         cleanup_rollcall()
@@ -174,7 +175,6 @@ module.exports = (robot) ->
 
     robot.hear /./i, (msg) ->
         user = msg.message.user.name.replace(/[^A-Za-z]*([A-Za-z]+).*/g, '$1')
-        console.log 'marking user as ready: ' + user
         readyhandler user, msg
 
     robot.hear /^([A-Za-z]+) is ready$/i, (msg) ->
