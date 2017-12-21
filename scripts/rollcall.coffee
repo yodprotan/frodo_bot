@@ -81,6 +81,8 @@ remove_user = (requests, user) ->
     idx = 0
     
     while idx < requests.length
+        console.log "looking at request " + requests[idx] + " to remove user " + user
+
         if requests[idx] is user
             requests.splice idx, 1
             console.log 'marking user as ready: ' + user
@@ -136,8 +138,6 @@ module.exports = (robot) ->
         group = msg.match[1]
         number = msg.match[2]
         users = rollcalls.get(group)
-        console.log "number " + number
-        console.log "users " + users.length
 
         if isNaN(parseFloat(number)) or number<1
             msg.send "Please enter a valid number"
@@ -182,6 +182,7 @@ module.exports = (robot) ->
 
     robot.hear /^([A-Za-z]+) is ready$/i, (msg) ->
         user = msg.match[1]
+        console.log "attempting to mark user as ready " + user
         readyhandler user, msg
 
     robot.hear /./i, (msg) ->
