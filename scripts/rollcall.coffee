@@ -1,7 +1,7 @@
 # Description:
 #     Allow marley to check if people are ready for league
 # Commands:
-#     marley rollcall 1234
+#     marley rollcall <group> for <number>
 #     marley stop rollcall
 #     user is here
 
@@ -49,6 +49,16 @@ class Rollcalls
         @cache[group].splice(index_of_user, 1)
         @robot.brain.data.groups = @cache
 
+    start_rollcall: (group, number) ->
+        if !isNaN(parseFloat(number)):
+            msg.send "Please enter a valid number"
+            return
+        else if number<@cache[group].length && number>0)
+            msg.send "Not enough people in group!"
+            return
+        else
+            msg.send ""
+
 rollcall = null
 # structure (when not null):
 # users:     ARRAY of users in the group; requests that still need a response:
@@ -63,23 +73,24 @@ cleanup_rollcall = ->
 
 get_responders_string = (requests) ->
     return null unless requests.length
-    users = (request.user for request in requests).unique()
+    users = (user for user in requests).unique()
     response = "#{users.join(' ')}"
     return response
     return unless rollcall
 
-remove_user = (requests, user) ->
+remove_user = (requests, user, numberLeft) ->
     idx = 0
     while idx < requests.length
-        if requests[idx].user is user or user in requests[idx].watchers
+        if requests[idx] is user
             requests.splice idx, 1
+            numberLeft--
         else
             idx++
 
 readyhandler = (user, msg) ->
     return unless rollcall
-    remove_user rollcall.requests, user.toLowerCase()
-    if rollcall.requests.length is 0
+    remove_user rollcall.requests, user.toLowerCase(), rollcall.numberLeft
+    if rollcall.requests.length is 0 or rollcall.numberLeft is 0
         msg.send "That's it! We're all ready to go!"
         cleanup_rollcall()
         return
@@ -117,54 +128,55 @@ module.exports = (robot) ->
         msg.send 'removing group ' + group
 
     
-    # robot.respond /rollcall (\d+)/i, (msg) ->
-    #     group = msg.match[1]
-        
-    #     accepted_requests = data[1].all
-    #     requests = []
-    #     for request in accepted_requests
-    #         user = request.user.toLowerCase()
-    #         requests.push {user: user}
-    #     remove_user requests, pushmaster
-    #     remove_user requests, msg.message.user.name.toLowerCase()
-    #     if requests.length is 0
-    #         msg.send "#{pushmaster}: no users to rollcall!"
-    #         return
-    #     msg.send "Rollcall starting for #{stdout}"
-    #     msg.send get_responders_string(requests)
-    #     msg.send "note: you can say 'username is ready' to mark someone else ready"
-    #     intervalCallback = ->
-    #         return unless rollcall
-    #         msg.send "Still waiting on: #{get_responders_string(rollcall.requests)}."
-    #     interval = setInterval(intervalCallback, 100 * 1000)
-    #     cancelCallback = ->
-    #         return unless rollcall
-    #         msg.send "#{pushmaster}: Stopping rollcall after 6 minutes and no response from #{get_responders_string(rollcall.requests)}."
-    #         cleanup_rollcall()
-    #     timeout = setTimeout(cancelCallback, 6 * 60 * 1000)
-    #     cleanup_rollcall()
-    #     rollcall = {requests: requests, pushmaster: pushmaster, timeout: timeout, interval: interval}
+    robot.respond /rollcall (.*) for (.*)/i, (msg) ->
+        group = msg.match[1]
+        number = msg.match[2]
+        rollcalls.start_rollcall(group, number)
+        users = rollcalls.get(group)
+        requests = []
+        for user in users
+            user = user.toLowerCase()
+            requests.push {user: user}
 
-    # stop_rollcall = (msg) ->
-    #     unless rollcall
-    #         msg.send "We aren't doing a rollcall right now!"
-    #         return
-    #     cleanup_rollcall()
-    #     msg.send "Ok, aborting this rollcall"
+        if requests.length is 0
+            msg.send "No users to rollcall!"
+            return
+        msg.send "Rollcall starting for group " + group +  " for " + number
+        msg.send get_responders_string(requests)
+        msg.send "note: you can say 'username is ready' to mark someone else ready"
+        intervalCallback = ->
+            return unless rollcall
+            msg.send "Still waiting on: #{get_responders_string(rollcall.requests)}."
+        interval = setInterval(intervalCallback, 100 * 1000)
+        cancelCallback = ->
+            return unless rollcall
+            msg.send "#{pushmaster}: Stopping rollcall after 6 minutes and no response from #{get_responders_string(rollcall.requests)}."
+            cleanup_rollcall()
+        timeout = setTimeout(cancelCallback, 6 * 60 * 1000)
+        cleanup_rollcall()
+        rollcall = {requests: requests, numberLeft: number, timeout: timeout, interval: interval}
 
-    # robot.respond /stop rollcall/i, stop_rollcall
-    # robot.respond /rollcall stop/i, stop_rollcall
+    stop_rollcall = (msg) ->
+        unless rollcall
+            msg.send "We aren't doing a rollcall right now!"
+            return
+        cleanup_rollcall()
+        msg.send "Ok, aborting this rollcall"
 
-    # robot.hear /./i, (msg) ->
-    #     user = msg.message.user.name.replace(/[^A-Za-z]*([A-Za-z]+).*/g, '$1')
-    #     readyhandler user, msg
+    robot.respond /stop rollcall/i, stop_rollcall
+    robot.respond /rollcall stop/i, stop_rollcall
 
-    # robot.hear /^([A-Za-z]+) is ready$/i, (msg) ->
-    #     user = msg.match[1]
-    #     readyhandler user, msg
+    robot.hear /./i, (msg) ->
+        user = msg.message.user.name.replace(/[^A-Za-z]*([A-Za-z]+).*/g, '$1')
+        console.log 'marking user as ready: ' + user
+        readyhandler user, msg
 
-    # robot.respond /rollcall status/i, (msg) ->
-    #     unless rollcall
-    #         msg.send "We aren't doing a rollcall right now!"
-    #         return
-    #     msg.send "Waiting on #{get_responders_string(rollcall.requests)}"
+    robot.hear /^([A-Za-z]+) is ready$/i, (msg) ->
+        user = msg.match[1]
+        readyhandler user, msg
+
+    robot.respond /rollcall status/i, (msg) ->
+        unless rollcall
+            msg.send "We aren't doing a rollcall right now!"
+            return
+        msg.send "Waiting on #{get_responders_string(rollcall.requests)}"
