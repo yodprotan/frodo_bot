@@ -117,18 +117,16 @@ module.exports = (robot) ->
         user = msg.match[1]
         group = msg.match[2]
         rollcalls.add_to_group(msg, user, group)
-        msg.send 'adding ' + user + ' to group ' + group
+
 
     robot.respond /remove (.*) from (.*)$/i, (msg) ->
         user = msg.match[1]
         group = msg.match[2]
         rollcalls.remove_from_group(msg, user, group)
-        msg.send 'removing ' + user + ' from group ' + group
 
     robot.respond /remove group (.*)$/i, (msg) ->
         group = msg.match[1]
         rollcalls.remove_group(group)
-        msg.send 'removing group ' + group
 
     
     robot.respond /rollcall (.*) for (.*)/i, (msg) ->
