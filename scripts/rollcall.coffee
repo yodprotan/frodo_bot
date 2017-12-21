@@ -55,6 +55,8 @@ class Rollcalls
 
     start_rollcall: (msg, group, number) ->
         if !isNaN(parseFloat(number))
+            console.log 'number is ' + number
+            console.log 'number is ' + isNaN(parseFloat(number))
             msg.send "Please enter a valid number"
             return
         else if number<@cache[group].length && number>0
@@ -78,6 +80,7 @@ cleanup_rollcall = ->
 get_responders_string = (requests) ->
     return null unless requests.length
     response = "#{requests.join(' ')}"
+    console.log 'response is ' + response
     return response
     return unless rollcall
 
