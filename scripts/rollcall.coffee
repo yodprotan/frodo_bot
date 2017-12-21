@@ -49,7 +49,7 @@ class Rollcalls
         @cache[group].splice(index_of_user, 1)
         @robot.brain.data.groups = @cache
 
-    start_rollcall: (group, number) ->
+    start_rollcall: (msg, group, number) ->
         if !isNaN(parseFloat(number))
             msg.send "Please enter a valid number"
             return
@@ -131,7 +131,7 @@ module.exports = (robot) ->
     robot.respond /rollcall (.*) for (.*)/i, (msg) ->
         group = msg.match[1]
         number = msg.match[2]
-        rollcalls.start_rollcall(group, number)
+        rollcalls.start_rollcall(msg, group, number)
         users = rollcalls.get(group)
         requests = []
         for user in users
