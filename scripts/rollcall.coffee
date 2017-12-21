@@ -89,15 +89,18 @@ remove_user = (requests, user, numberLeft) ->
         if requests[idx] is user
             requests.splice idx, 1
             numberLeft--
-            console.log "numleft " + numberLeft 
+            return true
         else
             idx++
+    
+    return false
 
 readyhandler = (user, msg) ->
     return unless rollcall
-    remove_user rollcall.requests, user.toLowerCase(), rollcall.numberLeft
-    console.log "numleft post remove " + rollcall.numberLeft
-    console.log "request number " + rollcall.requests 
+    succ = remove_user rollcall.requests, user.toLowerCase(), rollcall.numberLeft
+    if succ
+        rollcall.numberLeft--
+
     if rollcall.requests.length is 0 or rollcall.numberLeft is 0
         msg.send "That's it! We're all ready to go!"
         cleanup_rollcall()
