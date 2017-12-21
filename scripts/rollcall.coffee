@@ -144,7 +144,7 @@ module.exports = (robot) ->
         requests = []
         for user in users
             user = user.toLowerCase()
-            requests.push {user: user}
+            requests.push user
 
         if requests.length is 0
             msg.send "No users to rollcall!"
