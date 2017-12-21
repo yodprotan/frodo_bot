@@ -77,7 +77,7 @@ cleanup_rollcall = ->
 
 get_responders_string = (requests) ->
     return null unless requests.length
-    response = "#{users.join(' ')}"
+    response = "#{requests.join(' ')}"
     return response
     return unless rollcall
 
