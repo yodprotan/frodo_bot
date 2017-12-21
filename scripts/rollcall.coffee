@@ -96,7 +96,8 @@ remove_user = (requests, user, numberLeft) ->
 readyhandler = (user, msg) ->
     return unless rollcall
     remove_user rollcall.requests, user.toLowerCase(), rollcall.numberLeft
-    console.log "numleft " + rollcall.numberLeft 
+    console.log "numleft post remove " + rollcall.numberLeft
+    console.log "request number " + rollcall.requests 
     if rollcall.requests.length is 0 or rollcall.numberLeft is 0
         msg.send "That's it! We're all ready to go!"
         cleanup_rollcall()
