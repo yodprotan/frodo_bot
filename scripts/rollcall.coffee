@@ -133,7 +133,8 @@ module.exports = (robot) ->
         group = msg.match[1]
         number = msg.match[2]
         users = rollcalls.get(group)
-
+        console.log "number " + number
+        console.log "users " + users.length
         if isNaN(parseFloat(number)) or number<1
             msg.send "Please enter a valid number"
             return
