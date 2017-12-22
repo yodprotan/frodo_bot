@@ -152,7 +152,7 @@ module.exports = (robot) ->
         
         requests = []
         for user in users
-            user = user.toLowerCase()
+            user = user
             requests.push user
 
         if requests.length is 0
