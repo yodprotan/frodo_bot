@@ -5,6 +5,8 @@
   "author": "arthur",
   "description": "friend",
   "dependencies": {
+    "es6-shim": "^0.35.3",
+    "esrever": "^0.2.0",
     "hubot": "^2.19.0",
     "hubot-ambush": "0.0.3",
     "hubot-coin": "0.0.2",
@@ -29,8 +31,8 @@
     "hubot-slack": "^4.3.4",
     "hubot-soon": "^1.0.0",
     "hubot-thank-you": "0.0.3",
-    "hubot-youtube": "^1.0.2",
     "hubot-xkcd": "0.0.3",
+    "hubot-youtube": "^1.0.2",
     "to-zalgo": "1.0.1"
   },
   "engines": {
