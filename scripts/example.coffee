@@ -115,7 +115,6 @@ module.exports = (robot) ->
       else
           msg.send "and welcome to the jam"
 
-module.exports = (robot) ->
   robot.respond /TIME$/i, (msg) ->
     today = new Date()
     year = today.getFullYear()  + " "
