@@ -79,8 +79,8 @@ module.exports = (robot) ->
   #         idx = Math.floor(Math.random() * flippers.length)
   #         msg.emote "#{flippers[idx]} #{flipped}"
 
-  robot.respond /put (.+) back$/i, (msg) ->
-      msg.emote "#{flip(msg.match[1])} ノ( ゜-゜ノ)"
+  # robot.respond /put (.+) back$/i, (msg) ->
+  #     msg.emote "#{flip(msg.match[1])} ノ( ゜-゜ノ)"
 
   robot.respond /do a flip$/i, (msg) ->
       msg.emote "(╯°□°）╯    ︵    ノ(.ᴗ. ノ)    ︵ ヽ(`Д´)ﾉ"
