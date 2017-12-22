@@ -98,7 +98,7 @@ remove_user = (requests, user) ->
 
 readyhandler = (user, msg) ->
     return unless rollcall
-    succ = remove_user rollcall.requests, user.toLowerCase()
+    succ = remove_user rollcall.requests, user
     if succ
         rollcall.numberLeft--
 
