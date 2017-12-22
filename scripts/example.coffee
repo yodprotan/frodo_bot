@@ -1,18 +1,14 @@
 ﻿# Description:
-#   Example scripts for you to examine and try out.
+#     Flip things!
 #
-# Dependencies:
-#   None
-#
-# Configuration:
-#   None
-# 
-# Notes:
-#   They are commented out by default, because most of them are pretty silly and
-#   wouldn't be useful and amusing enough for day to day huboting.
-#   Uncomment the ones you want to try and experiment with.
-#
-#   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
+# Commands:
+#     marley flip <thing> - Flip thing.
+#     marley put <thing> back - Now put it back.
+#     marley do a flip - Watch Marley perform gymnastics
+#     marley come on and slam - and welcome to the jam
+
+flip = require('../bin/flip')
+
 
 daylist = [ 
   'Sunday'  
@@ -47,16 +43,6 @@ find_comment = (hour, minute) ->
   return "."
 
 
-# Description:
-#     Flip things!
-#
-# Commands:
-#     marley flip <thing> - Flip thing.
-#     marley put <thing> back - Now put it back.
-#     marley do a flip - Watch Marley perform gymnastics
-#     marley come on and slam - and welcome to the jam
-
-# flip = require('../bin/flip')
 
 module.exports = (robot) ->
   flippers = [
@@ -69,18 +55,18 @@ module.exports = (robot) ->
       "(┛❍ᴥ❍)┛彡",
   ]
 
-  # robot.respond /flip( (.+))?/i, (msg) ->
-  #     if msg.match[2] == "nishbot"
-  #         msg.emote "(╯°Д°）╯︵/(.□ . \)"
-  #     else if msg.match[2] == "me"
-  #         msg.emote "(╯°Д°）╯︵#{flip(msg.message.user.name)}"
-  #     else
-  #         flipped = if msg.match[2] then flip(msg.match[2]) else '┻━┻'
-  #         idx = Math.floor(Math.random() * flippers.length)
-  #         msg.emote "#{flippers[idx]} #{flipped}"
+  robot.respond /flip( (.+))?/i, (msg) ->
+      if msg.match[2] == "nishbot"
+          msg.emote "(╯°Д°）╯︵/(.□ . \)"
+      else if msg.match[2] == "me"
+          msg.emote "(╯°Д°）╯︵#{flip(msg.message.user.name)}"
+      else
+          flipped = if msg.match[2] then flip(msg.match[2]) else '┻━┻'
+          idx = Math.floor(Math.random() * flippers.length)
+          msg.emote "#{flippers[idx]} #{flipped}"
 
-  # robot.respond /put (.+) back$/i, (msg) ->
-  #     msg.emote "#{flip(msg.match[1])} ノ( ゜-゜ノ)"
+  robot.respond /put (.+) back$/i, (msg) ->
+      msg.emote "#{flip(msg.match[1])} ノ( ゜-゜ノ)"
 
   robot.respond /do a flip$/i, (msg) ->
       msg.emote "(╯°□°）╯    ︵    ノ(.ᴗ. ノ)    ︵ ヽ(`Д´)ﾉ"
