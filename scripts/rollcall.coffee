@@ -188,7 +188,7 @@ module.exports = (robot) ->
         readyhandler user, msg
 
     robot.hear /./i, (msg) ->
-        user = msg.message.user
+        user = msg.message.user.profile.display_name
         readyhandler user, msg
 
 
