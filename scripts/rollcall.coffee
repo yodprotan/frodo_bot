@@ -188,7 +188,7 @@ module.exports = (robot) ->
         readyhandler user, msg
 
     robot.hear /./i, (msg) ->
-        user = msg.message.user.name.replace(/[^A-Za-z]*([A-Za-z]+).*/g, '$1')
+        user = msg.message.user
         readyhandler user, msg
 
 
