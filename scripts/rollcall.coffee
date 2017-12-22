@@ -75,7 +75,7 @@ get_responders_string = (users) ->
     return null unless users.length
     requests = []
     for user in users
-        requests.push user
+        requests.push "@" + user.profile.display_name
     response = requests.join(' ')
 
     return response
