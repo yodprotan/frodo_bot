@@ -56,7 +56,7 @@ find_comment = (hour, minute) ->
 #     marley do a flip - Watch Marley perform gymnastics
 #     marley come on and slam - and welcome to the jam
 
-flip = require('../bin/flip')
+# flip = require('../bin/flip')
 
 module.exports = (robot) ->
     flippers = [
@@ -69,15 +69,15 @@ module.exports = (robot) ->
         "(┛❍ᴥ❍)┛彡",
     ]
 
-    robot.respond /flip( (.+))?/i, (msg) ->
-        if msg.match[2] == "nishbot"
-            msg.emote "(╯°Д°）╯︵/(.□ . \)"
-        else if msg.match[2] == "me"
-            msg.emote "(╯°Д°）╯︵#{flip(msg.message.user.name)}"
-        else
-            flipped = if msg.match[2] then flip(msg.match[2]) else '┻━┻'
-            idx = Math.floor(Math.random() * flippers.length)
-            msg.emote "#{flippers[idx]} #{flipped}"
+    # robot.respond /flip( (.+))?/i, (msg) ->
+    #     if msg.match[2] == "nishbot"
+    #         msg.emote "(╯°Д°）╯︵/(.□ . \)"
+    #     else if msg.match[2] == "me"
+    #         msg.emote "(╯°Д°）╯︵#{flip(msg.message.user.name)}"
+    #     else
+    #         flipped = if msg.match[2] then flip(msg.match[2]) else '┻━┻'
+    #         idx = Math.floor(Math.random() * flippers.length)
+    #         msg.emote "#{flippers[idx]} #{flipped}"
 
     robot.respond /put (.+) back$/i, (msg) ->
         msg.emote "#{flip(msg.match[1])} ノ( ゜-゜ノ)"
