@@ -182,7 +182,7 @@ module.exports = (robot) ->
     robot.respond /stop rollcall/i, stop_rollcall
     robot.respond /rollcall stop/i, stop_rollcall
 
-    robot.hear /^(@[A-Za-z]+) is ready$/i, (msg) ->
+    robot.hear /^(.*) is ready$/i, (msg) ->
         user = msg.match[1]
         readyhandler user, msg
 
