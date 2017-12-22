@@ -15,14 +15,7 @@ module.exports = (robot) ->
                 msg.send 'you boring...'
             else if num > 5
                 msg.send "I have something special for you!"
-                msg.send "\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020_"
-                msg.send "\u0020\u0020\u0020\u0020\u0020]=["
-                msg.send ".-'(P)'-."
-                msg.send "|absolut|"
-                msg.send "| ~~~~~ |"
-                msg.send "| ~~~~~ |"
-                msg.send "| ~~~~~ |"
-                msg.send "'_______'"
+                msg.send "\ud83c\udf78"
             else
                 str += "\ud83c\udf7a " for i in [1..num-1]
                 msg.send "here you go: #{str}"
