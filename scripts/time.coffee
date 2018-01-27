@@ -110,10 +110,10 @@ module.exports = (robot) ->
   # Listen for "time best [n]" and return the top n rankings
   ###
   robot.respond /time best\s*(\d+)?$/i, (msg) ->
-    parseData = parseListMessage(msg, "The Best", time.top)
+    parseData = parseListMessage(msg, "Most Dank", time.top)
 
   ###
   # Listen for "time worst [n]" and return the bottom n rankings
   ###
   robot.respond /time worst\s*(\d+)?$/i, (msg) ->
-    parseData = parseListMessage(msg, "The Worst", time.bottom)
+    parseData = parseListMessage(msg, "Least Dank", time.bottom)
