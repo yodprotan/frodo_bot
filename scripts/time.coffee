@@ -77,19 +77,18 @@ class Time
 module.exports = (robot) ->
   time = new Time robot
 
-  robot.respond(/TIME$/i, function(msg) {
-    var comment, date, day, hour, minute, minutes, month, today, year;
-    today = new Date();
-    year = today.getFullYear() + " ";
-    month = monthlist[today.getMonth()] + " ";
-    date = today.getDate() + ", ";
-    day = daylist[today.getDay()] + ", ";
-    hour = today.getHours() % 12;
-    minute = today.getMinutes();
-    minutes = minute > 9 ? "" + minute : "0" + minute;
-    comment = time.find_comment(msg, hour, minute);
-    return msg.send("Server time is: " + day + month + date + year + hour + ":" + minutes + comment);
-  });
+
+  robot.respond /TIME$/i, (msg) ->
+    today = new Date()
+    year = today.getFullYear()  + " "
+    month = monthlist[today.getMonth()] + " "
+    date = today.getDate() + ", "
+    day = daylist[today.getDay()] + ", "
+    hour = today.getHours() % 12
+    minute = today.getMinutes()
+    minutes = if minute > 9 then "" + minute else "0" + minute;
+    comment = time.find_comment(hour, minute)
+    msg.send "Server time is: " + day + month + date + year + hour  + ":" + minutes + comment
 
   ###
   # Function that handles best and worst list
