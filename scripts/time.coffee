@@ -69,7 +69,6 @@ class Time
   find_comment: (msg, hour, minute) ->
     @increase(msg)
     if (hour == 4 and minute == 20)
-        
         return ". Blaze It :mary_jane:"
     if (hour == 3 and minute == 14)
         return ". :pie:"
@@ -88,7 +87,7 @@ module.exports = (robot) ->
     hour = today.getHours() % 12
     minute = today.getMinutes()
     minutes = if minute > 9 then "" + minute else "0" + minute;
-    comment = time.find_comment(hour, minute)
+    comment = time.find_comment(msg, hour, minute)
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minutes + comment
 
   ###
