@@ -99,8 +99,6 @@ module.exports = (robot) ->
   parseListMessage = (msg, title, rankingFunction) ->
     count = if msg.match.length > 1 then msg.match[1] else null
     verbiage = [title]
-    if count?
-      verbiage[0] = verbiage[0].concat(" ", count.toString())
     for item, rank in rankingFunction(count)
       verbiage.push "#{rank + 1}. #{item.name} - #{item.score}"
     msg.send verbiage.join("\n")
