@@ -9,41 +9,6 @@
 
 flip = require('../bin/flip')
 
-
-daylist = [ 
-  'Sunday'  
-  'Monday'  
-  'Tuesday'  
-  'Wednesday'  
-  'Thursday'  
-  'Friday'  
-  'Saturday'  
-]
-
-monthlist = [ 
-  'January'
-  'February'
-  'March'
-  'April'
-  'May'
-  'June'
-  'July'
-  'August'
-  'September'
-  'October'
-  'November'
-  'December'
-]  
-
-find_comment = (hour, minute) ->
-  if (hour == 4 and minute == 20) 
-    return ". Blaze It :mary_jane:"
-  if (hour == 3 and minute == 14)
-    return ". :pie:"
-  return "."
-
-
-
 module.exports = (robot) ->
   flippers = [
       "(╯°□°）╯︵",
@@ -100,18 +65,6 @@ module.exports = (robot) ->
           msg.send "and welcome to japan"
       else
           msg.send "and welcome to the jam"
-
-  robot.respond /TIME$/i, (msg) ->
-    today = new Date()
-    year = today.getFullYear()  + " "
-    month = monthlist[today.getMonth()] + " "
-    date = today.getDate() + ", "
-    day = daylist[today.getDay()] + ", "
-    hour = today.getHours() % 12
-    minute = today.getMinutes()
-    minutes = if minute > 9 then "" + minute else "0" + minute;
-    comment = find_comment(hour, minute)
-    msg.send "Server time is: " + day + month + date + year + hour  + ":" + minutes + comment
 
   robot.hear /the pact is writ/i, (res) ->
     res.emote ":pogchamp: :pogchamp: :pogchamp:"
