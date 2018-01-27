@@ -67,8 +67,9 @@ class Time
     sorted.slice(-n).reverse()
 
   find_comment: (msg, hour, minute) ->
+    @increase(msg)
     if (hour == 4 and minute == 20)
-        @increase(msg)
+        
         return ". Blaze It :mary_jane:"
     if (hour == 3 and minute == 14)
         return ". :pie:"
