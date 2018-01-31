@@ -91,6 +91,6 @@ module.exports = (robot) ->
     res.emote "_whimpers_"
 
   robot.hear /press (.*) to pay respects/i, (res) ->
-    res.emote msg.match[1]
+    res.emote res.match[1]
   
 
