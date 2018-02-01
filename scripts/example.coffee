@@ -93,4 +93,5 @@ module.exports = (robot) ->
   robot.hear /press (.*) to pay respects/i, (res) ->
     res.emote res.match[1]
   
-
+  robot.hear /paul ryan/i, (res) ->
+    res.emote ":eggplant:"
