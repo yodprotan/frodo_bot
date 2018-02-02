@@ -83,7 +83,8 @@ class Time
     else if (hour == 3 and minute == 14)
         return ". :pie:"
     else
-        @today = []
+        @today ?= []
+        @increase(msg)
         return "."
 
 module.exports = (robot) ->
