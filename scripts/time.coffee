@@ -53,7 +53,7 @@ class Time
       @today = []
       
     if msg.message.user.name in @today
-        msg.reply " is a cheater."
+        msg.reply "cheater."
     else
         @today.push msg.message.user.name
         @time[msg.message.user.name] ?= 0
@@ -87,7 +87,7 @@ class Time
     else if (hour == 3 and minute == 14)
         return ". :pie:"
     else
-        @increase(msg)
+        @today = []
         return "."
 
 module.exports = (robot) ->
