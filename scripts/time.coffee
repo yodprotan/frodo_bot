@@ -49,6 +49,9 @@ class Time
 
 
   increase: (msg) ->
+    if not @today
+      @today = []
+      
     if msg.message.user.name in @today
         msg.send "cheater."
     else
