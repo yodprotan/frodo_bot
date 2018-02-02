@@ -50,11 +50,12 @@ class Time
 
   increase: (msg) ->
     if msg.message.user.name in @today
+        msg.send "cheater."
+    else
         @time[msg.message.user.name] ?= 0
         @time[msg.message.user.name] += 1
         @robot.brain.data.time = @time
-    else
-        msg.send "cheater."
+        
 
   set: (user, number) ->
     @time[user] = number
