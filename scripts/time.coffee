@@ -47,9 +47,17 @@ class Time
       if @robot.brain.data.time
         @time = @robot.brain.data.time
 
+
   increase: (msg) ->
-    @time[msg.message.user.name] ?= 0
-    @time[msg.message.user.name] += 1
+    if msg.message.user.name in @today
+        @time[msg.message.user.name] ?= 0
+        @time[msg.message.user.name] += 1
+        @robot.brain.data.time = @time
+    else
+        msg.respond "cheater."
+
+  set: (user, number) ->
+    @time[user] = number
     @robot.brain.data.time = @time
 
   sort: ->
@@ -68,11 +76,15 @@ class Time
 
   find_comment: (msg, hour, minute) ->
     if (hour == 4 and minute == 20)
+        @today ?= []
         @increase(msg)
         return ". Blaze It :mary_jane:"
-    if (hour == 3 and minute == 14)
+
+    else if (hour == 3 and minute == 14)
         return ". :pie:"
-    return "."
+    else
+        @today = []
+        return "."
 
 module.exports = (robot) ->
   time = new Time robot
@@ -108,3 +120,9 @@ module.exports = (robot) ->
   ###
   robot.respond /time best\s*(\d+)?$/i, (msg) ->
     parseData = parseListMessage(msg, "Most Dank", time.top)
+
+  robot.respond /time set (.*) (.*)/i, (msg) ->
+    user = msg.match[1]
+    number = msg.match[2]
+    time.set(user, number)
+    msg.respond "okay setting " + user + " to " + number
