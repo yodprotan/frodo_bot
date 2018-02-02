@@ -125,4 +125,4 @@ module.exports = (robot) ->
     user = msg.match[1]
     number = msg.match[2]
     time.set(user, number)
-    msg.respond "okay setting " + user + " to " + number
+    msg.send "okay setting " + user + " to " + number
