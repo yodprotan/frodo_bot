@@ -87,8 +87,7 @@ class Time
     else if (hour == 3 and minute == 14)
         return ". :pie:"
     else
-        # @today = []
-        @increase(msg)
+        @today = []
         return "."
 
 module.exports = (robot) ->
@@ -127,10 +126,10 @@ module.exports = (robot) ->
     parseData = parseListMessage(msg, "Most Dank", time.top)
 
 
-  robot.respond /time set (.*) (.*)/i, (msg) ->
-    user = msg.match[1]
-    numberAsString = msg.match[2]
-    number = parseInt(numberAsString, 10 );
-    time.set(user, number)
-    msg.send "okay setting " + user + " to " + number
+#   robot.respond /time set (.*) (.*)/i, (msg) ->
+#     user = msg.match[1]
+#     numberAsString = msg.match[2]
+#     number = parseInt(numberAsString, 10 );
+#     time.set(user, number)
+#     msg.send "okay setting " + user + " to " + number
 
