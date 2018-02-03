@@ -129,7 +129,8 @@ module.exports = (robot) ->
 
   robot.respond /time set (.*) (.*)/i, (msg) ->
     user = msg.match[1]
-    number = msg.match[2]
+    numberAsString = msg.match[2]
+    number = parseInt(numberAsString, 10 );
     time.set(user, number)
     msg.send "okay setting " + user + " to " + number
 
