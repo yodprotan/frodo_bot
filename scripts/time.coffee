@@ -125,10 +125,10 @@ module.exports = (robot) ->
   robot.respond /time best\s*(\d+)?$/i, (msg) ->
     parseData = parseListMessage(msg, "Most Dank", time.top)
 
-  ### for testing
-  #   robot.respond /time set (.*) (.*)/i, (msg) ->
-  #     user = msg.match[1]
-  #     number = msg.match[2]
-  #     time.set(user, number)
-  #     msg.send "okay setting " + user + " to " + number
-  ###
+
+  robot.respond /time set (.*) (.*)/i, (msg) ->
+    user = msg.match[1]
+    number = msg.match[2]
+    time.set(user, number)
+    msg.send "okay setting " + user + " to " + number
+
