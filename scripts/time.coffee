@@ -53,7 +53,7 @@ class Time
       @today = []
       
     if msg.message.user.name in @today
-        msg.reply "cheaterr."
+        msg.reply "cheater."
     else
         @today.push msg.message.user.name
         @time[msg.message.user.name] ?= 0
