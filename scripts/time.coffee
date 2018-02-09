@@ -118,9 +118,9 @@ module.exports = (robot) ->
     for item, rank in rankingFunction(count)
       if rank == 1
         verbiage.push "#{rank + 1}. :first_place_medal: #{item.name} - #{item.score}"
-      else if rank == 1
+      else if rank == 2
         verbiage.push "#{rank + 1}. :second_place_medal: #{item.name} - #{item.score}"
-      else if rank == 1
+      else if rank == 3
         verbiage.push "#{rank + 1}. :third_place_medal: #{item.name} - #{item.score}"
       else
         verbiage.push "#{rank + 1}. #{item.name} - #{item.score}"
