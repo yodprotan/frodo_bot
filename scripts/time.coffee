@@ -116,11 +116,11 @@ module.exports = (robot) ->
     count = if msg.match.length > 1 then msg.match[1] else null
     verbiage = [title]
     for item, rank in rankingFunction(count)
-      if rank == 1
+      if rank == 0
         verbiage.push "#{rank + 1}. :first_place_medal: #{item.name} - #{item.score}"
-      else if rank == 2
+      else if rank == 1
         verbiage.push "#{rank + 1}. :second_place_medal: #{item.name} - #{item.score}"
-      else if rank == 3
+      else if rank == 2
         verbiage.push "#{rank + 1}. :third_place_medal: #{item.name} - #{item.score}"
       else
         verbiage.push "#{rank + 1}. #{item.name} - #{item.score}"
