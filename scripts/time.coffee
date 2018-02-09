@@ -123,7 +123,7 @@ module.exports = (robot) ->
       else if rank == 2
         verbiage.push ":third_place_medal: #{item.name} - #{item.score}"
       else
-        verbiage.push "#{rank + 1}. #{item.name} - #{item.score}"
+        verbiage.push " #{rank + 1}. #{item.name} - #{item.score}"
     msg.send verbiage.join("\n")
 
   ###
