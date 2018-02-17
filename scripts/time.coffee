@@ -148,7 +148,7 @@ module.exports = (robot) ->
   # Listen for "all time best [n]" and return the top n rankings all time
   ###
   robot.respond /all time best\s*(\d+)?$/i, (msg) ->
-    parseData = parseListMessage(msg, "Most Dank (All Time)", time.top_all)
+    parseData = parseListMessage(msg, "Most Dank of all time", time.top_all)
 
   ###
   # Listen for "time reset" and reset the ranking, and
