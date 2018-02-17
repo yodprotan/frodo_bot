@@ -162,10 +162,10 @@ module.exports = (robot) ->
   # of user x to value y.
   # Used for one off corrections, (i.e. for jon's cheating)
   ###
-  robot.respond /time set (.*) (.*)/i, (msg) ->
-    user = msg.match[1]
-    numberAsString = msg.match[2]
-    number = parseInt(numberAsString, 10 );
-    time.set(user, number)
-    msg.send "okay setting " + user + " to " + number
+  # robot.respond /time set (.*) (.*)/i, (msg) ->
+  #   user = msg.match[1]
+  #   numberAsString = msg.match[2]
+  #   number = parseInt(numberAsString, 10 );
+  #   time.set(user, number)
+  #   msg.send "okay setting " + user + " to " + number
 
