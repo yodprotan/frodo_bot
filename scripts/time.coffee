@@ -99,8 +99,8 @@ class Time
       @aggregate_time[key] += val
       @time[key] = 0
 
-    # @robot.brain.data.time = @time
-    # @robot.brain.data.aggregate_time = @aggregate_time
+    @robot.brain.data.time = @time
+    @robot.brain.data.aggregate_time = @aggregate_time
     msg.reply "resetting the scoreboard, thanks for playing."
 
 module.exports = (robot) ->
