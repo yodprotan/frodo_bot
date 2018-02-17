@@ -42,10 +42,13 @@ class Time
   
   constructor: (@robot) ->
     @time = {}
+    @aggregate_time = {}
     
     @robot.brain.on 'loaded', =>
       if @robot.brain.data.time
         @time = @robot.brain.data.time
+      if @robot.brain.data.aggregate_time
+        @aggregate_time = @robot.brain.data.aggregate_time
 
 
   increase: (msg) ->
@@ -65,19 +68,19 @@ class Time
     @time[user] = number
     @robot.brain.data.time = @time
 
-  sort: ->
+  sort: (scoreboard) ->
     s = []
-    for key, val of @time
+    for key, val of scoreboard
       s.push({ name: key, score: val })
     s.sort (a, b) -> b.score - a.score
 
   top: (n = 5) =>
-    sorted = @sort()
+    sorted = @sort(@time)
     sorted.slice(0, n)
-
-  bottom: (n = 5) =>
-    sorted = @sort()
-    sorted.slice(-n).reverse()
+  
+  top_all: (n = 5) =>
+    sorted = @sort(@aggregate_time)
+    sorted.slice(0, n)
 
   find_comment: (msg, hour, minute) ->
     if (hour == 4 and minute == 20)
@@ -90,9 +93,18 @@ class Time
         @today = []
         return "."
 
+  reset: (msg) ->
+    for key, val of @time
+      @aggregate_time[key] ?= 0
+      @aggregate_time[key] += val
+      @time[key] = 0
+
+    # @robot.brain.data.time = @time
+    # @robot.brain.data.aggregate_time = @aggregate_time
+    msg.reply "resetting the scoreboard, thanks for playing."
+
 module.exports = (robot) ->
   time = new Time robot
-
 
   robot.respond /TIME$/i, (msg) ->
     today = new Date()
@@ -132,7 +144,24 @@ module.exports = (robot) ->
   robot.respond /time best\s*(\d+)?$/i, (msg) ->
     parseData = parseListMessage(msg, "Most Dank", time.top)
 
+  ###
+  # Listen for "all time best [n]" and return the top n rankings all time
+  ###
+  robot.respond /all time best\s*(\d+)?$/i, (msg) ->
+    parseData = parseListMessage(msg, "Most Dank (All Time)", time.top_all)
+    
+  ###
+  # Listen for "time reset" and reset the ranking, and
+  # recording all time stats into aggregate_time
+  ###
+  robot.respond /time reset/i, (msg) ->
+    time.reset(msg)
 
+  ###
+  # Listen for "time set x to y" and reset the ranking,
+  # of user x to value y.
+  # Used for one off corrections, (i.e. for jon's cheating)
+  ###
 #   robot.respond /time set (.*) (.*)/i, (msg) ->
 #     user = msg.match[1]
 #     numberAsString = msg.match[2]
