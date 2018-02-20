@@ -2,8 +2,8 @@
 #   Forgetful? Add reminders.
 #
 # Commands:
-#   remind me to <action> in <time> or
-#   remind me in <time> to <action> - Set a reminder in <time> to do an <action>
+#   remind <user> to <action> in <time> or
+#   remind <user> in <time> to <action> - Set a reminder in <time> to do an <action>
 #   <time> is in the format 1 day, 2 hours, 5 minutes etc
 #   Time segments are optional, as are commas
 
@@ -95,21 +95,25 @@ class Reminder
         dueDate = new Date @due
         dueDate.toString()
 
-setupReminder = ({msg, reminders, action, time}) ->
+setupReminder = ({msg, reminders, user_str, action, time}) ->
     # Send the user a PM if the reminder originated from a PM
     room = msg.message.user.room || msg.message.user.name
-    reminder = new Reminder(msg.message.user, time, action, room)
+    if user_str == "me"
+        user = msg.message.user
+    else
+        user = user_str
+    reminder = new Reminder(user, time, action, room)
     reminders.add reminder
     msg.send 'I\'ll remind you to ' + action + ' on ' + reminder.dueDate()
 
 module.exports = (robot) ->
     reminders = new Reminders robot
 
-    robot.respond /remind me to (.*) in ((?:\d+)\s?(?:weeks?|days?|hours?|hrs?|h|minutes?|mins?|m|seconds?|secs?|s))[ ,]*(?:time)?/i, (msg) ->
-        setupReminder {msg, reminders, action: msg.match[1], time: msg.match[2]}
+    robot.respond /remind (me|@[\.\w\d]+) to (.*) in ((?:\d+)\s?(?:weeks?|days?|hours?|hrs?|h|minutes?|mins?|m|seconds?|secs?|s))[ ,]*(?:time)?/i, (msg) ->
+        setupReminder {msg, reminders, user: msg.match[1], action: msg.match[2], time: msg.match[3]}
 
-    robot.respond /remind me in ((?:(?:\d+)\s?(?:weeks?|days?|hours?|hrs?|h|minutes?|mins?|m|seconds?|secs?|s)[ ,]*(?:and|time)? +)+)to (.*)/i, (msg) ->
-        setupReminder {msg, reminders, action: msg.match[2], time: msg.match[1]}
+    robot.respond /remind (me|@[\.\w\d]+) in ((?:(?:\d+)\s?(?:weeks?|days?|hours?|hrs?|h|minutes?|mins?|m|seconds?|secs?|s)[ ,]*(?:and|time)? +)+)to (.*)/i, (msg) ->
+        setupReminder {msg, reminders, user: msg.match[1], action: msg.match[3], time: msg.match[2]}
 
     robot.respond /clear reminder to (.*)/, (msg) ->
         user = msg.message.user.name
