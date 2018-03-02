@@ -184,4 +184,8 @@ module.exports = (robot) ->
   ###
   robot.respond /tron$/i, (msg) ->
     score = time.score()
-    msg.send "Congratulations on your " + score + " tron."
+    stringScore = score.toString()
+    emojiScore = ""
+    for i in [0..(stringScore.length-1)]
+      emojiScore += ":" + i + ": "
+    msg.send "Congratulations on your " + emojiScore + " tron."
