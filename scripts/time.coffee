@@ -93,15 +93,15 @@ class Time
         @today = []
         return "."
 
-  tron: ->
+  score: ->
     if not @today
       @today = []
     # if (hour == 4 and minute == 20)
     #     return "still calculating."
     # else
-    length = @today.length
+    score = @today.length
     @today = []
-    return "Congratulations on your " + length + " tron." 
+    return score 
 
   reset: (msg) ->
     for key, val of @time
@@ -183,4 +183,5 @@ module.exports = (robot) ->
   # Listen for "frodo tron" and list the count
   ###
   robot.respond /tron$/i, (msg) ->
-    msg.send time.tron
+    score = time.tron
+    msg.send "Congratulations on your " + score + " tron.
