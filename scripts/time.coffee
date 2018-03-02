@@ -93,6 +93,16 @@ class Time
         @today = []
         return "."
 
+  tron: ->
+    if not @today
+      @today = []
+    # if (hour == 4 and minute == 20)
+    #     return "still calculating."
+    # else
+    length = @today.length
+    @today = []
+    return "Congratulations on your " + length + " tron". 
+
   reset: (msg) ->
     for key, val of @time
       @aggregate_time[key] ?= 0
@@ -169,3 +179,8 @@ module.exports = (robot) ->
   #   time.set(user, number)
   #   msg.send "okay setting " + user + " to " + number
 
+  ###
+  # Listen for "frodo tron" and list the count
+  ###
+  robot.respond /tron$/i, (msg) ->
+    msg.send time.tron
