@@ -183,5 +183,5 @@ module.exports = (robot) ->
   # Listen for "frodo tron" and list the count
   ###
   robot.respond /tron$/i, (msg) ->
-    score = time.tron
+    score = time.score
     msg.send "Congratulations on your " + score + " tron.
