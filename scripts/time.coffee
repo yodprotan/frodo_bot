@@ -101,7 +101,7 @@ class Time
     # else
     length = @today.length
     @today = []
-    return "Congratulations on your " + length + " tron". 
+    return "Congratulations on your " + length + " tron." 
 
   reset: (msg) ->
     for key, val of @time
