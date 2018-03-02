@@ -184,4 +184,4 @@ module.exports = (robot) ->
   ###
   robot.respond /tron$/i, (msg) ->
     score = time.score
-    msg.send "Congratulations on your " + score + " tron.
+    msg.send "Congratulations on your " + score + " tron."
