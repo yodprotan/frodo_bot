@@ -36,6 +36,19 @@ monthlist = [
   'December'
 ]  
 
+numberToText = {
+  1: "one"
+  2: "two"
+  3: "three"
+  4: "four"
+  5: "five"
+  6: "six"
+  7: "seven"
+  8: "eight"
+  9: "nine"
+  0: "zero"
+}
+
 
 
 class Time
@@ -187,5 +200,6 @@ module.exports = (robot) ->
     stringScore = score.toString()
     emojiScore = ""
     for i in [0..(stringScore.length-1)]
-      emojiScore += ":" + i + ": "
+      text = numberToText[i]
+      emojiScore += ":" + text + ": "
     msg.send "Congratulations on your " + emojiScore + " tron."
