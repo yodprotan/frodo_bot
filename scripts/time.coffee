@@ -104,6 +104,7 @@ class Time
         return ". :pie:"
     else
         @today = []
+        @today.push msg.message.user.name
         return "."
 
   score: ->
