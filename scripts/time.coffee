@@ -109,11 +109,12 @@ class Time
   score: ->
     if not @today
       @today = []
-    # if (hour == 4 and minute == 20)
-    #     return "still calculating."
-    # else
-    score = @today.length
-    @today = []
+
+    if (hour == 4 and minute == 20)
+        return "still calculating. Delete this."
+    else
+      score = @today.length
+      @today = []
     return score 
 
   reset: (msg) ->
