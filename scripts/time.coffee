@@ -110,11 +110,8 @@ class Time
     if not @today
       @today = []
 
-    if (hour == 4 and minute == 20)
-        return "still calculating. Delete this."
-    else
-      score = @today.length
-      @today = []
+    score = @today.length
+    @today = []
     return score 
 
   reset: (msg) ->
@@ -197,9 +194,12 @@ module.exports = (robot) ->
   # Listen for "frodo tron" and list the count
   ###
   robot.respond /tron$/i, (msg) ->
-    stringScore = time.score().toString()
-    emojiScore = ""
-    for i in [0..(stringScore.length-1)]
-      emoji = numberToEmoji[i]
-      emojiScore += emoji
-    msg.send "Congratulations on your " + emojiScore + "tron :b:"
+    if (hour == 4 and minute == 20)
+      msg.respond "still calculating. Delete this."
+    else
+      stringScore = time.score().toString()
+      emojiScore = ""
+      for i in [0..(stringScore.length-1)]
+        emoji = numberToEmoji[i]
+        emojiScore += emoji
+      msg.send "Congratulations on your " + emojiScore + "tron :b:"
