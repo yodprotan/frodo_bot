@@ -206,4 +206,4 @@ module.exports = (robot) ->
       for i in [0..(stringScore.length-1)]
         emoji = numberToEmoji[i]
         emojiScore += emoji
-      msg.send "Congratulations on your " + emojiScore + "tron :b:"
+      msg.send "Congratulations on your " + emojiScore + "tron :b: :ok-hand: :100:"
