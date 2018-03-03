@@ -194,6 +194,9 @@ module.exports = (robot) ->
   # Listen for "frodo tron" and list the count
   ###
   robot.respond /tron$/i, (msg) ->
+    today = new Date()
+    hour = today.getHours() % 12
+    minute = today.getMinutes()
     if (hour == 4 and minute == 20)
       msg.respond "still calculating. Delete this."
     else
