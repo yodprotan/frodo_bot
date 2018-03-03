@@ -107,9 +107,10 @@ class Time
         @today.push msg.message.user.name
         return "."
 
-  score: ->
+  score: (msg)->
     score = @today.length
     @today = []
+    msg.send score + ""
     return score 
 
   reset: (msg) ->
