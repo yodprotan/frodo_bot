@@ -191,7 +191,8 @@ module.exports = (robot) ->
   #   msg.send "okay setting " + user + " to " + number
 
   ###
-  # Listen for "frodo tron" and list the count
+  # Listen for "tron" and list the count of responders for today
+  # Note: This resets the day's count. 
   ###
   robot.respond /tron$/i, (msg) ->
     today = new Date()
