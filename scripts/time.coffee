@@ -108,9 +108,6 @@ class Time
         return "."
 
   score: ->
-    if not @today
-      @today = []
-
     score = @today.length
     @today = []
     return score 
@@ -200,7 +197,7 @@ module.exports = (robot) ->
     hour = today.getHours() % 12
     minute = today.getMinutes()
     if (hour == 4 and minute == 20)
-      msg.respond "still calculating. Delete this."
+      msg.reply "still calculating. Delete this."
     else
       stringScore = time.score().toString()
       emojiScore = ""
