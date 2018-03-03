@@ -36,17 +36,17 @@ monthlist = [
   'December'
 ]  
 
-numberToText = {
-  1: "one"
-  2: "two"
-  3: "three"
-  4: "four"
-  5: "five"
-  6: "six"
-  7: "seven"
-  8: "eight"
-  9: "nine"
-  0: "zero"
+numberToEmoji = {
+  1: ":one: "
+  2: ":two: "
+  3: ":three: "
+  4: ":four: "
+  5: ":five: "
+  6: ":six: "
+  7: ":seven: "
+  8: ":eight: "
+  9: ":nine: "
+  0: ":zero: "
 }
 
 
@@ -196,10 +196,9 @@ module.exports = (robot) ->
   # Listen for "frodo tron" and list the count
   ###
   robot.respond /tron$/i, (msg) ->
-    score = time.score()
-    stringScore = score.toString()
+    stringScore = time.score().toString()
     emojiScore = ""
     for i in [0..(stringScore.length-1)]
-      text = numberToText[i]
-      emojiScore += ":" + text + ": "
+      emoji = numberToEmoji[i]
+      emojiScore += emoji
     msg.send "Congratulations on your " + emojiScore + "tron :b:"
