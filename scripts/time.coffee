@@ -103,11 +103,13 @@ class Time
     else if (hour == 3 and minute == 14)
         return ". :pie:"
     else
-        @today = []
+        # @today = []
         @today.push msg.message.user.name
         return "."
 
   score: (msg)->
+    if not @today
+      @today = []
     score = @today.length
     @today = []
     msg.send score + ""
@@ -205,4 +207,4 @@ module.exports = (robot) ->
       for i in [0..(stringScore.length-1)]
         emoji = numberToEmoji[i]
         emojiScore += emoji
-      msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
+      msg.send stringScore#"Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
