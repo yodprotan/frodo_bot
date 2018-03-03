@@ -203,7 +203,7 @@ module.exports = (robot) ->
     else
       stringScore = time.score(msg).toString()
       emojiScore = ""
-      for cg in stringScore
-        emoji = numberToEmoji[stringScore[i]]
+      for ch in stringScore
+        emoji = numberToEmoji[ch]
         emojiScore += emoji
       msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
