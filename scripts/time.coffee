@@ -110,8 +110,7 @@ class Time
     if not @today
       @today = []
 
-    today = @today.length
-    return today
+    return @today.length
 
   reset_today: ->
     @today = []
@@ -207,6 +206,7 @@ module.exports = (robot) ->
       for ch in score.toString()
         emojiScore += numberToEmoji[ch]
       msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
+      time.reset_today()
 
   ###
   # Listen for "tron" and list the count of responders for today
