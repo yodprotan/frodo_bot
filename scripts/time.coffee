@@ -106,7 +106,7 @@ class Time
         @today = []
         return "."
 
-  today: ->
+  get_today: ->
     if not @today
       @today = []
 
@@ -200,7 +200,7 @@ module.exports = (robot) ->
     today = new Date()
     hour = today.getHours() % 12
     minute = today.getMinutes()
-    score = time.today(msg)
+    score = time.get_today(msg)
     if score > 1 and not (hour == 4 and minute == 20)
       emojiScore = ""
       for ch in score.toString()
@@ -219,7 +219,7 @@ module.exports = (robot) ->
     if (hour == 4 and minute == 20)
       msg.reply "still calculating. Delete this."
     else
-      score = time.today(msg)
+      score = time.get_today(msg)
       if score < 1
         msg.send "_loooooseerrrr_ http://i.imgur.com/h9gwfrP.gif"
       else 
