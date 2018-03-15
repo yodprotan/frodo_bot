@@ -202,7 +202,7 @@ module.exports = (robot) ->
     hour = today.getHours() % 12
     minute = today.getMinutes()
     score = time.today(msg)
-    if score > 1 and not (hour == 4 and minute == 20)=
+    if score > 1 and not (hour == 4 and minute == 20)
       emojiScore = ""
       for ch in score.toString()
         emojiScore += numberToEmoji[ch]
