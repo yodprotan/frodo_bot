@@ -201,9 +201,11 @@ module.exports = (robot) ->
     if (hour == 4 and minute == 20)
       msg.reply "still calculating. Delete this."
     else
-      stringScore = time.score(msg).toString()
-      emojiScore = ""
-      for ch in stringScore
-        emoji = numberToEmoji[ch]
-        emojiScore += emoji
-      msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
+      score = time.score(msg)
+      if score < 1
+        msg.send "_loooooseerrrr_"
+      else 
+        emojiScore = ""
+        for ch in score.toString()
+          emojiScore += numberToEmoji[ch]
+        msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
