@@ -106,13 +106,15 @@ class Time
         @today = []
         return "."
 
-  score: (msg)->
+  today: ->
     if not @today
       @today = []
 
-    score = @today.length
+    today = @today.length
+    return today
+
+  reset_today: ->
     @today = []
-    return score 
 
   reset: (msg) ->
     for key, val of @time
@@ -191,6 +193,22 @@ module.exports = (robot) ->
   #   msg.send "okay setting " + user + " to " + number
 
   ###
+  # responds with the count of responders for today automattically
+  # after four twenty
+  # Note: This resets the day's count. 
+  ###
+  robot.hear /./i, (msg) ->
+    today = new Date()
+    hour = today.getHours() % 12
+    minute = today.getMinutes()
+    score = time.today(msg)
+    if score > 1 and not (hour == 4 and minute == 20)=
+      emojiScore = ""
+      for ch in score.toString()
+        emojiScore += numberToEmoji[ch]
+      msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
+
+  ###
   # Listen for "tron" and list the count of responders for today
   # Note: This resets the day's count. 
   ###
@@ -201,7 +219,7 @@ module.exports = (robot) ->
     if (hour == 4 and minute == 20)
       msg.reply "still calculating. Delete this."
     else
-      score = time.score(msg)
+      score = time.today(msg)
       if score < 1
         msg.send "_loooooseerrrr_ http://i.imgur.com/h9gwfrP.gif"
       else 
@@ -209,3 +227,4 @@ module.exports = (robot) ->
         for ch in score.toString()
           emojiScore += numberToEmoji[ch]
         msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
+      time.reset_today()
