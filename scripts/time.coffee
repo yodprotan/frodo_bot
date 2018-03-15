@@ -203,7 +203,7 @@ module.exports = (robot) ->
     else
       score = time.score(msg)
       if score < 1
-        msg.send "_loooooseerrrr_"
+        msg.send "_loooooseerrrr_ http://i.imgur.com/h9gwfrP.gif"
       else 
         emojiScore = ""
         for ch in score.toString()
