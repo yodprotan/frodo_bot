@@ -79,11 +79,12 @@ class Time
     sorted = @sort()
     sorted.slice(-n).reverse()
 
-  find_comment: (msg, hour, minute) ->
+  find_comment: (msg, month, date, hour, minute) ->
     if (hour == 4 and minute == 20)
         @increase(msg)
         return ". Blaze It :mary_jane:"
-
+    if (month == 4 and date == 20)
+        return ". Let's get fucking lit fam :mary_jane:"
     else if (hour == 3 and minute == 14)
         return ". :pie:"
     else
@@ -103,7 +104,7 @@ module.exports = (robot) ->
     hour = today.getHours() % 12
     minute = today.getMinutes()
     minutes = if minute > 9 then "" + minute else "0" + minute;
-    comment = time.find_comment(msg, hour, minute)
+    comment = time.find_comment(msg, today.getMonth(), today.getDate(), hour, minute)
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minutes + comment
 
   ###
