@@ -81,9 +81,6 @@ class Time
     @time[user] = number
     @robot.brain.data.time = @time
 
-  sort: ->
-    s = []
-    for key, val of @time
   sort: (scoreboard) ->
     s = []
     for key, val of scoreboard
