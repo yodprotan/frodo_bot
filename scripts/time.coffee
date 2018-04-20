@@ -105,7 +105,7 @@ class Time
     if (hour == 4 and minute == 20)
         @increase(msg)
         return ". Blaze It :mary_jane:"
-    if (month == 4 and date == 20)
+    if (month == 3 and date == 20)
         return ". Let's get fucking lit fam :mary_jane:"
     else if (hour == 3 and minute == 14)
         return ". :pie:"
