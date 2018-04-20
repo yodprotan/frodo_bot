@@ -100,12 +100,12 @@ class Time
     sorted.slice(0, n)
 
   find_comment: (msg, month, date, hour, minute) ->
+    console.log month
+    console.log date
     if (hour == 4 and minute == 20)
         @increase(msg)
         return ". Blaze It :mary_jane:"
     if (month == 4 and date == 20)
-        console.log month
-        console.log date
         return ". Let's get fucking lit fam :mary_jane:"
     else if (hour == 3 and minute == 14)
         return ". :pie:"
