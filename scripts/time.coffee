@@ -94,6 +94,10 @@ class Time
   bottom: (n = 5) =>
     sorted = @sort()
     sorted.slice(-n).reverse()
+  
+  top_all: (n = 5) =>
+    sorted = @sort(@aggregate_time)
+    sorted.slice(0, n)
 
   find_comment: (msg, month, date, hour, minute) ->
     if (hour == 4 and minute == 20)
@@ -101,18 +105,6 @@ class Time
         return ". Blaze It :mary_jane:"
     if (month == 4 and date == 20)
         return ". Let's get fucking lit fam :mary_jane:"
-    sorted = @sort(@time)
-    sorted.slice(0, n)
-  
-  top_all: (n = 5) =>
-    sorted = @sort(@aggregate_time)
-    sorted.slice(0, n)
-
-  find_comment: (msg, hour, minute) ->
-    if (hour == 4 and minute == 20)
-        @increase(msg)
-        return ". Blaze It :mary_jane:"
-
     else if (hour == 3 and minute == 14)
         return ". :pie:"
     else
