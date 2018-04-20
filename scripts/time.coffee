@@ -113,10 +113,6 @@ class Time
         @today = []
         return "."
 
-module.exports = (robot) ->
-  time = new Time robot
-
-
   get_today: ->
     if not @today
       @today = []
