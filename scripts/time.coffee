@@ -88,7 +88,7 @@ class Time
     s.sort (a, b) -> b.score - a.score
 
   top: (n = 5) =>
-    sorted = @sort()
+    sorted = @sort(@time)
     sorted.slice(0, n)
 
   bottom: (n = 5) =>
