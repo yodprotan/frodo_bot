@@ -55,26 +55,26 @@ module.exports = (robot) ->
   robot.hear /mika time$/i, (res) ->
     res.send res.random mika_active_quotes
 
-    robot.respond /thank you mika/i, (msg) ->
-        msg.send msg.random thankseses
+  robot.hear /thank you mika/i, (msg) ->
+      msg.send msg.random thankseses
 
-    robot.respond /mika thanks/i, (msg) ->
-        msg.send msg.random thankseses
+  robot.hear /mika thanks/i, (msg) ->
+      msg.send msg.random thankseses
 
-    robot.respond /mika tanks/i, (msg) ->
-        msg.send "Tanks? " + msg.random tankseses
+  robot.hear /mika tanks/i, (msg) ->
+      msg.send "Tanks? " + msg.random tankseses
 
-    robot.hear /^thanks,? mika/i, (msg) ->
-        msg.send msg.random thankseses
+  robot.hear /^thanks,? mika/i, (msg) ->
+      msg.send msg.random thankseses
 
-    robot.hear /^tanks,? mika/i, (msg) ->
-        msg.send "Tanks? " + msg.random tankseses
+  robot.hear /^tanks,? mika/i, (msg) ->
+      msg.send "Tanks? " + msg.random tankseses
 
-    robot.hear /^thank you mika/i, (msg) ->
-        msg.send msg.random thankseses
+  robot.hear /^thank you mika/i, (msg) ->
+      msg.send msg.random thankseses
 
-    robot.hear /^thanks brobot/, (msg) ->
-        msg.send "you got it, fleshbag"
+  robot.hear /^thanks brobot/, (msg) ->
+      msg.send "you got it, fleshbag"
 
 
   emote = (msg, emote) ->
