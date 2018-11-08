@@ -30,7 +30,6 @@
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^4.3.4",
     "hubot-soon": "^1.0.0",
-    "hubot-thank-you": "0.0.3",
     "hubot-xkcd": "0.0.3",
     "hubot-youtube": "^1.0.2",
     "to-zalgo": "1.0.1"
