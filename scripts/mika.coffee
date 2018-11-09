@@ -14,13 +14,8 @@ thankseses = [
     "you got it friend",
     "np boss",
     "you are most welcome",
-
-    # Actions
-    # These mimic /me messages by just using italics. To actually make a /me
-    # message, a whole different API call would need to be made, and italics
-    # mimics it closely enough
-    "_roos helpfully_",
     "_<3_",
+
 ]
 
 tankseses = [
@@ -37,11 +32,18 @@ tankseses = [
 ]
 
 mika_active_quotes = [ 
-  'HAH HAH HAH',
-  'PETS PETS PETS'
+  'HAH HAH HAH'
+  'PETS PETS PETS' 
+  'SELF PETS'
+  'GIVE TREAT'
+  'I JUST GOT PETS'
   'TREAT'
   '/ᐠ｡‸｡ᐟ\\'
   '/ᐠ｡ꞈ｡ᐟ❁ \\'
+  '_chases tail_'
+  '_sprints out_'
+  '/ᐠ .⋏. ᐟ\\'
+  'WALK TIME'
 ]
 
 mika_inactive_quotes = [
@@ -49,6 +51,7 @@ mika_inactive_quotes = [
   '_slurping intensifies_'
   '_yawn_'
   '_curls up into ball_'
+  '_grumbles_'
 ]
 
 module.exports = (robot) ->
