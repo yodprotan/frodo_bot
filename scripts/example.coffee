@@ -78,7 +78,7 @@ module.exports = (robot) ->
     gggs = msg.match[2].length + 1
     hands = (new Array(gggs)).join('¯')
     arms = (new Array(uuus)).join('_')
-    msg.send "#{hands}\\#{arms}ツ#{arms}/#{hands}"
+    msg.send "#{hands}\\#{arms}(ツ)#{arms}/#{hands}"
 
   robot.hear /^thanks frodo$/i, (res) ->
     res.emote "_roos helpfully_"
