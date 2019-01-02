@@ -190,8 +190,8 @@ module.exports = (robot) ->
   # Listen for "time reset" and reset the ranking, and
   # recording all time stats into aggregate_time
   ###
-  robot.respond /time reset/i, (msg) ->
-    time.reset(msg)
+  # robot.respond /time reset/i, (msg) ->
+  #   time.reset(msg)
 
   ###
   # Listen for "time set x to y" and reset the ranking,
