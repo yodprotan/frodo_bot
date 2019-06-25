@@ -56,12 +56,16 @@ class Time
   constructor: (@robot) ->
     @time = {}
     @aggregate_time = {}
+    @score_by_day = {}
     
     @robot.brain.on 'loaded', =>
       if @robot.brain.data.time
         @time = @robot.brain.data.time
       if @robot.brain.data.aggregate_time
         @aggregate_time = @robot.brain.data.aggregate_time
+      if @robot.brain.data.score_by_day
+        @score_by_day = @robot.brain.data.score_by_day
+
 
 
   increase: (msg) ->
@@ -119,7 +123,15 @@ class Time
 
     return @today.length
 
-  reset_today: ->
+  reset_today: (today, score) ->
+    year = today.getFullYear()
+    month = today.getMonth()
+    date = today.getDate()
+
+    @score_by_day[(year, month, date)] ?= 0
+    @score_by_day[(year, month, date)] += score
+    @robot.brain.data.score_by_day = @score_by_day
+    
     @today = []
 
   reset: (msg) ->
@@ -137,7 +149,7 @@ module.exports = (robot) ->
 
   robot.respond /TIME$/i, (msg) ->
     today = new Date()
-    year = today.getFullYear()  + " "
+    year = today.getFullYear() + " "
     month = monthlist[today.getMonth()] + " "
     date = today.getDate() + ", "
     day = daylist[today.getDay()] + ", "
@@ -173,13 +185,7 @@ module.exports = (robot) ->
   robot.respond /time best\s*(\d+)?$/i, (msg) ->
     parseData = parseListMessage(msg, "Most Dank", time.top)
 
-  ### for testing
-  #   robot.respond /time set (.*) (.*)/i, (msg) ->
-  #     user = msg.match[1]
-  #     number = msg.match[2]
-  #     time.set(user, number)
-  #     msg.send "okay setting " + user + " to " + number
-  ###
+
   ###
   # Listen for "all time best [n]" and return the top n rankings all time
   ###
@@ -190,8 +196,8 @@ module.exports = (robot) ->
   # Listen for "time reset" and reset the ranking, and
   # recording all time stats into aggregate_time
   ###
-  # robot.respond /time reset/i, (msg) ->
-  #   time.reset(msg)
+  robot.respond /time reset/i, (msg) ->
+    time.reset(msg)
 
   ###
   # Listen for "time set x to y" and reset the ranking,
@@ -205,12 +211,14 @@ module.exports = (robot) ->
   #   time.set(user, number)
   #   msg.send "okay setting " + user + " to " + number
 
+
   ###
   # responds with the count of responders for today automattically
   # after four twenty
   # Note: This resets the day's count. 
   ###
   robot.hear /./i, (msg) ->
+    console.log msg
     today = new Date()
     hour = today.getHours() % 12
     minute = today.getMinutes()
@@ -220,25 +228,25 @@ module.exports = (robot) ->
       for ch in score.toString()
         emojiScore += numberToEmoji[ch]
       msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
-      time.reset_today()
+      time.reset_today(today, score)
 
   ###
   # Listen for "tron" and list the count of responders for today
   # Note: This resets the day's count. 
   ###
-  robot.respond /tron$/i, (msg) ->
-    today = new Date()
-    hour = today.getHours() % 12
-    minute = today.getMinutes()
-    if (hour == 4 and minute == 20)
-      msg.reply "still calculating. Delete this."
-    else
-      score = time.get_today(msg)
-      if score < 1
-        msg.send "_loooooseerrrr_ http://i.imgur.com/h9gwfrP.gif"
-      else 
-        emojiScore = ""
-        for ch in score.toString()
-          emojiScore += numberToEmoji[ch]
-        msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
-      time.reset_today()
+  # robot.respond /tron$/i, (msg) ->
+  #   today = new Date()
+  #   hour = today.getHours() % 12
+  #   minute = today.getMinutes()
+  #   if (hour == 4 and minute == 20)
+  #     msg.reply "still calculating. Delete this."
+  #   else
+  #     score = time.get_today(msg)
+  #     if score < 1
+  #       msg.send "_loooooseerrrr_ http://i.imgur.com/h9gwfrP.gif"
+  #     else 
+  #       emojiScore = ""
+  #       for ch in score.toString()
+  #         emojiScore += numberToEmoji[ch]
+  #       msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
+  #     time.reset_today()
