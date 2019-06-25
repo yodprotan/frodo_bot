@@ -222,7 +222,7 @@ module.exports = (robot) ->
   ###
   robot.hear /./i, (msg) ->
     today = new Date()
-    hour = today.getHours() % 12
+    hour = today.getHours() % 13
     minute = today.getMinutes()
     score = time.get_today(msg)
     if score > 1 and not (hour == 4 and minute == 20) and msg.message.user.room == "CK58J140P"
