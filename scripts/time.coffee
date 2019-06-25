@@ -221,7 +221,6 @@ module.exports = (robot) ->
   # Note: This resets the day's count. 
   ###
   robot.hear /./i, (msg) ->
-    console.log msg
     today = new Date()
     hour = today.getHours() % 12
     minute = today.getMinutes()
