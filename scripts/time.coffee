@@ -128,8 +128,9 @@ class Time
     month = today.getMonth()
     date = today.getDate()
 
-    # @score_by_day[(year, month, date)] ?= 0
-    # @score_by_day[(year, month, date)] += score
+    # Could you find a jankier way to cast to str?
+    @score_by_day[("" + year + month + date)] ?= 0
+    @score_by_day[("" + year + month + date)] += score
     @robot.brain.data.score_by_day = @score_by_day
     
     @today = []
