@@ -157,6 +157,7 @@ module.exports = (robot) ->
     date = today.getDate() + ", "
     day = daylist[today.getDay()] + ", "
     hour = today.getHours() % 12
+    hour = if hour > 1 then hour else 12;
     minute = today.getMinutes()
     minutes = double_digit minute;
     comment = time.find_comment(msg, today.getMonth(), today.getDate(), hour, minute)
@@ -222,7 +223,8 @@ module.exports = (robot) ->
   ###
   robot.hear /./i, (msg) ->
     today = new Date()
-    hour = today.getHours() % 13
+    hour = today.getHours() % 12
+    hour = if hour > 1 then hour else 12;
     minute = today.getMinutes()
     score = time.get_today(msg)
     if score > 1 and not (hour == 4 and minute == 20) and msg.message.user.room == "CK58J140P"
