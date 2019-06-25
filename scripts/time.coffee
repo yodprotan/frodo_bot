@@ -49,6 +49,8 @@ numberToEmoji = {
   "0": ":zero: "
 }
 
+double_digit = (number) ->
+  return if number > 9 then "" + number else "0" + number;
 
 
 class Time
@@ -79,7 +81,6 @@ class Time
         @time[msg.message.user.name] ?= 0
         @time[msg.message.user.name] += 1
         @robot.brain.data.time = @time
-        
 
   set: (user, number) ->
     @time[user] = number
@@ -125,14 +126,15 @@ class Time
 
   reset_today: (today, score) ->
     year = today.getFullYear()
-    month = today.getMonth()
-    date = today.getDate()
+    month = double_digit today.getMonth()
+    date = double_digit today.getDate()
 
     # Could you find a jankier way to cast to str?
     @score_by_day[("" + year + month + date)] ?= 0
     @score_by_day[("" + year + month + date)] += score
     @robot.brain.data.score_by_day = @score_by_day
-    
+    console.log "recording " + score + " for " + year "/" + month + "/" + day
+
     @today = []
 
   reset: (msg) ->
@@ -156,7 +158,7 @@ module.exports = (robot) ->
     day = daylist[today.getDay()] + ", "
     hour = today.getHours() % 12
     minute = today.getMinutes()
-    minutes = if minute > 9 then "" + minute else "0" + minute;
+    minutes = double_digit minute;
     comment = time.find_comment(msg, today.getMonth(), today.getDate(), hour, minute)
     msg.send "Server time is: " + day + month + date + year + hour  + ":" + minutes + comment
 
