@@ -133,7 +133,7 @@ class Time
     @score_by_day[("" + year + month + date)] ?= 0
     @score_by_day[("" + year + month + date)] += score
     @robot.brain.data.score_by_day = @score_by_day
-    console.log "recording " + score + " for " + year "/" + month + "/" + date
+    console.log "recording " + score + " for " + year + "/" + month + "/" + date
 
     @today = []
 
