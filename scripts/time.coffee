@@ -126,7 +126,7 @@ class Time
 
   reset_today: (today, score) ->
     year = today.getFullYear()
-    month = double_digit today.getMonth()
+    month = double_digit today.getMonth() + 1
     date = double_digit today.getDate()
 
     # Could you find a jankier way to cast to str?
