@@ -200,8 +200,8 @@ module.exports = (robot) ->
   # Listen for "time reset" and reset the ranking, and
   # recording all time stats into aggregate_time
   ###
-  robot.respond /time reset/i, (msg) ->
-    time.reset(msg)
+  # robot.respond /time reset/i, (msg) ->
+  #   time.reset(msg)
 
   ###
   # Listen for "time set x to y" and reset the ranking,
@@ -227,7 +227,7 @@ module.exports = (robot) ->
     hour = if hour > 1 then hour else 12;
     minute = today.getMinutes()
     score = time.get_today(msg)
-    if score > 1 and not (hour == 4 and minute == 20) and msg.message.user.room == "CK58J140P"
+    if score > 0 and not (hour == 4 and minute == 20) and msg.message.user.room == "CK58J140P"
       emojiScore = ""
       for ch in score.toString()
         emojiScore += numberToEmoji[ch]
