@@ -110,7 +110,7 @@ class Time
     if (hour == 4 and minute == 20)
         @increase(msg)
         return ". Blaze It :mary_jane:"
-    if (month == 3 and date == 20)
+    if (month == 4 and date == 20)
         return ". Let's get fucking lit fam :mary_jane:"
     else if (hour == 3 and minute == 14)
         return ". :pie:"
@@ -152,16 +152,24 @@ module.exports = (robot) ->
 
   robot.respond /TIME$/i, (msg) ->
     today = new Date()
-    year = today.getFullYear() + " "
-    month = monthlist[today.getMonth()] + " "
-    date = today.getDate() + ", "
-    day = daylist[today.getDay()] + ", "
+    
+    year_s = today.getFullYear() + " "
+
+    month = today.getMonth() # for some dumb reason, this is indexed by 0
+    month_s = monthlist[month] + " "
+
+    date = today.getDate()
+    date_s = today.getDate() + ", "
+    day_s = daylist[today.getDay()] + ", "
+
     hour = today.getHours() % 12
     hour = if hour > 0 then hour else 12;
+
     minute = today.getMinutes()
-    minutes = double_digit minute;
-    comment = time.find_comment(msg, today.getMonth(), today.getDate(), hour, minute)
-    msg.send "Server time is: " + day + month + date + year + hour  + ":" + minutes + comment
+    minute_s = double_digit minute;
+
+    comment = time.find_comment(msg, month + 1, date, hour, minute)
+    msg.send "Server time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + comment
 
   ###
   # Function that handles best and worst list
@@ -224,7 +232,7 @@ module.exports = (robot) ->
   robot.hear /./i, (msg) ->
     today = new Date()
     hour = today.getHours() % 12
-    hour = if hour > 1 then hour else 12;
+    hour = if hour > 0 then hour else 12;
     minute = today.getMinutes()
     score = time.get_today(msg)
     if score > 0 and not (hour == 4 and minute == 20) and msg.message.user.room == "CK58J140P"
