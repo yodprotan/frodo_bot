@@ -121,7 +121,8 @@ class Time
   get_today: ->
     if not @today
       @today = []
-
+      
+    console.log @today
     return @today.length
 
   reset_today: (today, score) ->
