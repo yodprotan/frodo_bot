@@ -8,8 +8,7 @@
 #   None
 #
 # Commands:
-#   `know that <subject> is <predicate>` - Remember a piece of information
-#   `what/who is <subject>` - Recalls a piece of information
+#
 thankseses = [
     "you got it friend",
     "np boss",

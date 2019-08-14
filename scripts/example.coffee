@@ -2,10 +2,10 @@
 #     Flip things!
 #
 # Commands:
-#     frodo flip <thing> - Flip thing.
-#     frodo put <thing> back - Now put it back.
-#     frodo do a flip - Watch frodo perform gymnastics
-#     frodo come on and slam - and welcome to the jam
+#     `frodo flip <thing>` - Flip thing.
+#     `frodo put <thing> back` - Now put it back.
+#     `frodo do a flip` - Watch frodo perform gymnastics
+#     `frodo come on and slam` - and welcome to the jam
 
 flip = require('../bin/flip')
 

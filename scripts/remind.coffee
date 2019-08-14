@@ -1,11 +1,13 @@
 # Description:
 #   Forgetful? Add reminders.
 #
-# Commands:
-#   remind me to <action> in <time> or
-#   remind me in <time> to <action> - Set a reminder in <time> to do an <action>
 #   <time> is in the format 1 day, 2 hours, 5 minutes etc
 #   Time segments are optional, as are commas
+#
+#
+# Commands:
+#   `frodo remind me to <action> in <time>` - Set a reminder in <time> to do an <action>
+#   `frodo remind me in <time> to <action>` - Set a reminder in <time> to do an <action>
 
 class Reminders
     constructor: (@robot) ->

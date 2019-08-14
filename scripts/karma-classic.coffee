@@ -8,12 +8,12 @@
 #   None
 #
 # Commands:
-#   <thing>++ - give thing some karma
-#   <thing>-- - take away some of thing's karma
-#   hubot karma <thing> - check thing's karma (if <thing> is omitted, show the top 5)
-#   hubot karma empty <thing> - empty a thing's karma
-#   hubot karma best [n] - show the top n (default: 5)
-#   hubot karma worst [n] - show the bottom n (default: 5)
+#   `<thing>++` - give thing some karma
+#   `<thing>--` - take away some of thing's karma
+#   `frodo karma <thing>` - check thing's karma (if <thing> is omitted, show the top 5)
+#   `frodo karma empty <thing>` - empty a thing's karma
+#   `frodo karma best [n]` - show the top n (default: 5)
+#   `frodo karma worst [n]` - show the bottom n (default: 5)
 
 
 class Karma

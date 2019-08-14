@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   `frodo time`: gets the server time
+#   `frodo time` - gets the server time
 # 
 
 daylist = [ 
