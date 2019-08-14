@@ -2,9 +2,9 @@
 #     Gives beer.
 #
 # Commands:
-#     frodo beer - Gives you a beer.
-#     frodo 3 beers - Gives you three beers.
-#     frodo 10 beers - Gives you a bottle of Absolut
+#     `frodo beer` - Gives you a beer.
+#     `frodo 3 beers` - Gives you three beers.
+#     `frodo 10 beers` - Gives you a bottle of Absolut
 
 module.exports = (robot) ->
     robot.respond /[^\d]+(\d+ )?beer/i, (msg) ->
