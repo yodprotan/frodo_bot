@@ -30,7 +30,7 @@ tankseses = [
     "http://i.imgur.com/acrGKHy.jpg",
 ]
 
-mika_active_quotes = [ 
+mika_quotes = [ 
   'HAH HAH HAH'
   'PETS PETS PETS' 
   'SELF PETS'
@@ -43,9 +43,6 @@ mika_active_quotes = [
   '_sprints out_'
   '/ᐠ .⋏. ᐟ\\'
   'WALK TIME'
-]
-
-mika_inactive_quotes = [
   '_slurp_'
   '_slurping intensifies_'
   '_yawn_'
@@ -55,7 +52,7 @@ mika_inactive_quotes = [
 
 module.exports = (robot) ->
   robot.hear /mika time$/i, (res) ->
-    res.send res.random Array::push.apply mika_active_quotes, mika_inactive_quotes 
+    res.send res.random mika_quotes
 
   robot.hear /thank you mika/i, (msg) ->
       msg.send msg.random thankseses
