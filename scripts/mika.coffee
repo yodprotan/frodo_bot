@@ -55,7 +55,7 @@ mika_inactive_quotes = [
 
 module.exports = (robot) ->
   robot.hear /mika time$/i, (res) ->
-    res.send res.random mika_active_quotes
+    res.send res.random Array::push.apply mika_active_quotes, mika_inactive_quotes 
 
   robot.hear /thank you mika/i, (msg) ->
       msg.send msg.random thankseses
