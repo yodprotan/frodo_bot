@@ -5,6 +5,7 @@
   "author": "arthur",
   "description": "friend",
   "dependencies": {
+    "@slack/client": "^5.0.2",
     "es6-shim": "^0.35.3",
     "esrever": "^0.2.0",
     "hubot": "^2.19.0",
