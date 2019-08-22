@@ -60,5 +60,5 @@ module.exports = (robot) ->
     verb = msg.match[2]
     knowledge.recall(msg, verb, subject)
 
-  robot respond /random fact$/i, (msg) ->
+  robot.respond /random fact$/i, (msg) ->
     knowledge.random(msg)
