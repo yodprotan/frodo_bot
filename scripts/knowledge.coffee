@@ -22,6 +22,13 @@ class Knowledge
       if @robot.brain.data.knowledge
         @knowledge = @robot.brain.data.knowledge
 
+  random:(msg)->
+    all_knowledge = ['jon is a chud']
+    for subject, predicate of @knowledge
+      all_knowledge.push  "#{subject} is #{predicate}"
+    msg.reply all_knowledge[Math.floor(Math.random() * (all_knowledge.length + 1))]
+    
+
   remember: (msg, subject, verb, predicate) ->
     @knowledge[subject.toLowerCase()] = predicate
     @robot.brain.data.knowledge = @knowledge
@@ -52,3 +59,6 @@ module.exports = (robot) ->
     subject = msg.match[3]
     verb = msg.match[2]
     knowledge.recall(msg, verb, subject)
+
+  robot respond /random fact$/i, (msg) ->
+    knowledge.random(msg)
