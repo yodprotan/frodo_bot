@@ -44,6 +44,10 @@ class Knowledge
 
     else
       msg.send "#{subject} #{verb} #{subject}"
+    
+  total: (msg) ->
+    memory_shards = Object.keys(@knowledge).length
+    msg.reply "There are #{memory_shards} facts in my brain."
 
 module.exports = (robot) ->
   knowledge = new Knowledge robot
@@ -62,3 +66,6 @@ module.exports = (robot) ->
 
   robot.respond /random fact$/i, (msg) ->
     knowledge.random(msg)
+
+  robot.respond /total number of facts$/i, (msg) ->
+    knowledge.total(msg)
