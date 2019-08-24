@@ -2673,12 +2673,10 @@ emojis = [
 module.exports = (robot) => {
     robot.respond(/emoji me\s*(\d+)/i, (msg) => {
         count = msg.match.length > 1 ? msg.match[1] : 10;
-        console.log("count: " + count);
         response = "";
         for (i=0; i < count; i++){
-            console.log(response);
             response=response.concat(emojis[Math.floor(Math.random() * (emojis.length + 1))] + " ");
         }
         msg.send(response);
-    });
+    })
 }
