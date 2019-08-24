@@ -2668,7 +2668,7 @@ emojis = [
   ":sonic_waiting:",
   ":sadpoo:",
   ":thinking_wine:"
-];
+]
 
 module.exports = (robot) => {
     robot.respond(/emoji me\s*(\d+)/i, (msg) => {
@@ -2681,6 +2681,6 @@ module.exports = (robot) => {
                 response=response.concat(emojis[Math.floor(Math.random() * (emojis.length + 1))] + " ")
             }
         }
-        msg.send(response);\
+        msg.send(response)
     })
 }
