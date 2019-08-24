@@ -2660,7 +2660,7 @@ emojis = [
 
 module.exports = (robot) => {
     robot.respond(/emoji me (.*)/i, (msg) => {
-        count = if msg.match.length > 1 then msg.match[1] else 10
+        count = msg.match.length > 1 ? msg.match[1] : 10
         response = ""
         for (i=0; i < count; i++){
             response.concat(emojis[Math.floor(Math.random() * (emojis.length + 1))] + " ")
