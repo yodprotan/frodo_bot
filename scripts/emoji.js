@@ -1,3 +1,17 @@
+# Description:
+#   Returns random emojis
+#
+# Dependencies:
+#   None
+#
+# Configuration:
+#   None
+#
+# Commands:
+#   `frodo emoji me (n)` - retuns n random emojis
+# 
+
+
 emojis = [
   ":bowtie:",
   ":squirrel:",
@@ -2666,5 +2680,5 @@ module.exports = (robot) => {
             response.concat(emojis[Math.floor(Math.random() * (emojis.length + 1))] + " ")
         }
         msg.send(response)
-    })
+    });
 }
