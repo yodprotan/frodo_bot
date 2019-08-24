@@ -2672,15 +2672,15 @@ emojis = [
 
 module.exports = (robot) => {
     robot.respond(/emoji me\s*(\d+)/i, (msg) => {
-        count = msg.match.length > 1 ? msg.match[1] : 10;
-        response = "";
+        count = msg.match.length > 1 ? msg.match[1] : 10
+        response = ""
         if (count > 1000){
-            response = ":middle_finger: :middle_finger: :middle_finger: :middle_finger: :middle_finger:";
+            response = ":middle_finger: :middle_finger: :middle_finger: :middle_finger: :middle_finger:"
         } else {
             for (i=0; i < count; i++){
-                response=response.concat(emojis[Math.floor(Math.random() * (emojis.length + 1))] + " ");
+                response=response.concat(emojis[Math.floor(Math.random() * (emojis.length + 1))] + " ")
             }
         }
-        msg.send(response);
+        msg.send(response);\
     })
 }
