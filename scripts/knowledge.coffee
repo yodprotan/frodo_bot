@@ -10,6 +10,8 @@
 # Commands:
 #   `frodo know that <subject> is <predicate>` - Remember a piece of information
 #   `frodo what/who is <subject>` - Recalls a piece of information
+#   `frodo random fact` - Recalls a random piece of information
+#   `frodo total number of facts` - Recalls how many pieces of information are stored
 
 
 

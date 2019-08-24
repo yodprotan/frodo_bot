@@ -9,7 +9,9 @@
 #
 # Commands:
 #   `frodo time` - gets the server time
-# 
+#   `frodo time best n` - gets the leaderboard for this season
+#   `frodo all time best n ` - gets the leaderboard for all time
+#   
 
 daylist = [ 
   'Sunday'  
