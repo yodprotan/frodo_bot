@@ -2677,7 +2677,7 @@ module.exports = (robot) => {
         response = "";
         for (i=0; i < count; i++){
             console.log(response);
-            response.concat(emojis[Math.floor(Math.random() * (emojis.length + 1))] + " ");
+            response=response.concat(emojis[Math.floor(Math.random() * (emojis.length + 1))] + " ");
         }
         msg.send(response);
     });

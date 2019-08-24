@@ -8,7 +8,7 @@
     "@slack/client": "^5.0.2",
     "es6-shim": "^0.35.3",
     "esrever": "^0.2.0",
-    "hubot": "^2.19.0",
+    "hubot": "3.3.2",
     "hubot-ambush": "0.0.3",
     "hubot-coin": "0.0.2",
     "hubot-diagnostics": "0.0.1",
