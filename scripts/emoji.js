@@ -2659,7 +2659,7 @@ emojis = [
 
 
 module.exports = (robot) => {
-    robot.respond(/emoji me (.*)/i, (msg) => {
+    robot.respond(/emoji me\s*(\d+)/i, (msg) => {
         count = msg.match.length > 1 ? msg.match[1] : 10
         response = ""
         for (i=0; i < count; i++){
