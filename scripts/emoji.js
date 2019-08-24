@@ -1,15 +1,15 @@
-# Description:
-#   Returns random emojis
-#
-# Dependencies:
-#   None
-#
-# Configuration:
-#   None
-#
-# Commands:
-#   `frodo emoji me (n)` - retuns n random emojis
-# 
+// Description:
+//   Returns random emojis
+//
+// Dependencies:
+//   None
+//
+// Configuration:
+//   None
+//
+// Commands:
+//   `frodo emoji me (n)` - retuns n random emojis
+// 
 
 
 emojis = [
@@ -2669,8 +2669,6 @@ emojis = [
   ":sadpoo:",
   ":thinking_wine:"
 ];
-
-
 
 module.exports = (robot) => {
     robot.respond(/emoji me\s*(\d+)/i, (msg) => {
