@@ -33,7 +33,9 @@
     "hubot-soon": "^1.0.0",
     "hubot-xkcd": "0.0.3",
     "hubot-youtube": "^1.1.1",
-    "to-zalgo": "1.0.1"
+    "to-zalgo": "1.0.1",    
+    "htmlparser": "1.7.6",
+    "soupselect": "0.2.0"
   },
   "engines": {
     "node": "10.15.x"
