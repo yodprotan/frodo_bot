@@ -82,7 +82,10 @@ class Time
         @today.push msg.message.user.name
         @time[msg.message.user.name] ?= 0
         @time[msg.message.user.name] += 1
+        @aggregate_time[msg.message.user.name] ?= 0
+        @aggregate_time[msg.message.user.name] += 1
         @robot.brain.data.time = @time
+        @robot.brain.data.aggregate_time = @aggregate_time
 
   set: (user, number) ->
     @time[user] = number
@@ -210,8 +213,8 @@ module.exports = (robot) ->
   # Listen for "time reset" and reset the ranking, and
   # recording all time stats into aggregate_time
   ###
-  # robot.respond /time reset/i, (msg) ->
-  #   time.reset(msg)
+  robot.respond /time reset/i, (msg) ->
+    time.reset(msg)
 
   ###
   # Listen for "time set x to y" and reset the ranking,
