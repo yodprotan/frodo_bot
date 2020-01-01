@@ -144,12 +144,9 @@ class Time
 
   reset: (msg) ->
     for key, val of @time
-      @aggregate_time[key] ?= 0
-      @aggregate_time[key] += val
       @time[key] = 0
 
     @robot.brain.data.time = @time
-    @robot.brain.data.aggregate_time = @aggregate_time
     msg.reply "resetting the scoreboard, thanks for playing."
 
 module.exports = (robot) ->
@@ -213,8 +210,8 @@ module.exports = (robot) ->
   # Listen for "time reset" and reset the ranking, and
   # recording all time stats into aggregate_time
   ###
-  robot.respond /time reset/i, (msg) ->
-    time.reset(msg)
+  # robot.respond /time reset/i, (msg) ->
+  #   time.reset(msg)
 
   ###
   # Listen for "time set x to y" and reset the ranking,
