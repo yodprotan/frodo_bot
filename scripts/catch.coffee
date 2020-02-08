@@ -8,8 +8,10 @@
 #   None
 #
 # Commands:
-#   `frodo time ` - gets the server time
+#   `frodo catch <pokemon> ` - gets an image of <pokemon>
 #   
+# Dev:
+#	Jonny 'The Deluxe' Boy
 
 pokeToNumber = {
 	"Bulbasaur": "1"
