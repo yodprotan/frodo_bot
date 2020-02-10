@@ -828,4 +828,5 @@ module.exports = (robot) ->
     url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
     poke = msg.match[1] || "Ditto"
     poke = (poke.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
-    msg.send url + pokeToNumber[poke] + ".png"
+    pokeNumber = pokeToNumber[poke] !== undefined ? pokeToNumber[poke] : "132"
+    msg.send url + pokeNumber + ".png"
