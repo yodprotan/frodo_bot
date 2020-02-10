@@ -827,4 +827,4 @@ module.exports = (robot) ->
   robot.respond /catch (.+)/i, (msg) ->
     url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
     poke = msg.match[1] || "Ditto"
-    msg.send "#{url}?#pokeToNumber[poke]#.png"
+    msg.send "#{url}?#{pokeToNumber[poke]}#.png"
