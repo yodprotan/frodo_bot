@@ -100,3 +100,6 @@ module.exports = (robot) ->
   
   robot.hear /paul ryan/i, (res) ->
     res.emote ":eggplant:"
+
+  robot.hear /taste my blade/i, (res) ->
+    res.emote ":monkastab:"
