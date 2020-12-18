@@ -13,7 +13,7 @@
 
 module.exports = (robot) => {
   robot.respond(/^random calvin$/i, (msg) => {
-    url = "https://www.gocomics.com/calvinandhobbes/2020/12/12";
+    url = "https://www.gocomics.com/calvinandhobbes/";
     // First comic was in 2007
     year = 2007 + Math.floor(Math.random() * 15);
     month = Math.floor(Math.random() * 13);
