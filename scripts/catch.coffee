@@ -7,11 +7,13 @@
 # Configuration:
 #   None
 #
+# Dev:
+#   Jonny 'The Deluxe' Boy
+#
 # Commands:
 #   `frodo catch <pokemon> ` - gets an image of <pokemon>
 #   
-# Dev:
-#	Jonny 'The Deluxe' Boy
+# 
 
 pokeToNumber = {
 	"Bulbasaur": "1"

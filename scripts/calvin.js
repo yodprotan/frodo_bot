@@ -1,3 +1,16 @@
+// Description:
+//   Returns a random calvin and hobbes comic
+//
+// Dependencies:
+//   None
+//
+// Configuration:
+//   None
+//
+// Commands:
+//   `frodo random calvin` - returns a random calvin and hobbes comic
+//
+
 module.exports = (robot) => {
   robot.respond(/^random calvin$/i, (msg) => {
     url = "https://www.gocomics.com/calvinandhobbes/2020/12/12";
