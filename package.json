@@ -8,6 +8,7 @@
     "@slack/client": "^5.0.2",
     "es6-shim": "^0.35.3",
     "esrever": "^0.2.0",
+    "htmlparser": "1.7.6",
     "hubot": "3.3.2",
     "hubot-ambush": "0.0.3",
     "hubot-coin": "0.0.2",
@@ -32,11 +33,13 @@
     "hubot-soon": "^1.0.0",
     "hubot-xkcd": "0.0.5",
     "hubot-youtube": "^1.1.1",
-    "to-zalgo": "1.0.1",    
-    "htmlparser": "1.7.6",
-    "soupselect": "0.2.0"
+    "soupselect": "0.2.0",
+    "to-zalgo": "1.0.1"
   },
   "engines": {
     "node": "10.15.x"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
   }
 }

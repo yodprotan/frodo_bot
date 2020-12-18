@@ -9,8 +9,7 @@
 //
 // Commands:
 //   `frodo emoji me (n)` - retuns n random emojis
-// 
-
+//
 
 emojis = [
   ":bowtie:",
@@ -2835,20 +2834,23 @@ emojis = [
   ":dancing_otter:",
   ":waluigi2:",
   ":blob-grimace:",
-  ":ohhai:"
-]
+  ":ohhai:",
+];
 
 module.exports = (robot) => {
-    robot.respond(/emoji me\s*(\d+)/i, (msg) => {
-        count = msg.match.length > 1 ? msg.match[1] : 10
-        response = ""
-        if (count > 1000){
-            response = ":middle_finger: :middle_finger: :middle_finger: :middle_finger: :middle_finger:"
-        } else {
-            for (i=0; i < count; i++){
-                response=response.concat(emojis[Math.floor(Math.random() * (emojis.length + 1))] + " ")
-            }
-        }
-        msg.send(response)
-    })
-}
+  robot.respond(/emoji me\s*(\d+)/i, (msg) => {
+    count = msg.match.length > 1 ? msg.match[1] : 10;
+    response = "";
+    if (count > 1000) {
+      response =
+        ":middle_finger: :middle_finger: :middle_finger: :middle_finger: :middle_finger:";
+    } else {
+      for (i = 0; i < count; i++) {
+        response = response.concat(
+          emojis[Math.floor(Math.random() * (emojis.length + 1))] + " "
+        );
+      }
+    }
+    msg.send(response);
+  });
+};

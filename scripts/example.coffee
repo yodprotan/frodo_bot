@@ -98,7 +98,7 @@ module.exports = (robot) ->
   robot.hear /press (.*) to pay respects/i, (res) ->
     res.emote res.match[1]
   
-  robot.hear /paul ryan/i, (res) ->
+  robot.hear /bernie sanders/i, (res) ->
     res.emote ":eggplant:"
 
   robot.hear /taste my blade/i, (res) ->
