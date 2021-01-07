@@ -16,9 +16,9 @@ module.exports = (robot) => {
     url = "https://www.gocomics.com/calvinandhobbes/";
     // First comic was in 2007
     year = 2007 + Math.floor(Math.random() * 14);
-    month = Math.floor(Math.random() * 13);
+    month = 1 + Math.floor(Math.random() * 12);
     // Sorry 30 and 31 :(
-    day = Math.floor(Math.random() * 29);
+    day = 1 + Math.floor(Math.random() * 28);
     slash = "/";
     response = url.concat(
       year.toString(),
