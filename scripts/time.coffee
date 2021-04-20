@@ -137,7 +137,7 @@ class Time
         @increase(msg)
         return ". Blaze It :mary_jane:"
     if (month == 4 and date == 20)
-        return ". Let's get fucking lit fam :mary_jane: " + snoops[Math.floor(Math.random() * (snoops.length + 1))]
+        return ". Let's get fucking lit fam :mary_jane:"
     else if (hour == 3 and minute == 14)
         return ". :pie:"
     else
