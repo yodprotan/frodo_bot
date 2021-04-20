@@ -266,6 +266,12 @@ module.exports = (robot) ->
       msg.send "Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:"
       time.reset_today(today, score)
 
+  # Why not
+  robot.respond(/random snoop$/i, (msg) => {
+    response = snoops[Math.floor(Math.random() * (snoops.length + 1))]
+    msg.send(response);
+  });
+
   ###
   # Listen for "tron" and list the count of responders for today
   # Note: This resets the day's count. 
