@@ -132,6 +132,7 @@ class Time
     console.log month
     console.log date
     if (hour == 4 and minute == 20 and month == 4 and date == 20)
+        @increase(msg)
         return ". " + snoops[Math.floor(Math.random() * (snoops.length + 1))]
     if (hour == 4 and minute == 20)
         @increase(msg)
