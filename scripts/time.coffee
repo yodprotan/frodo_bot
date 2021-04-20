@@ -51,6 +51,25 @@ numberToEmoji = {
   "0": ":zero: "
 }
 
+snoops = [
+  'https://i.pinimg.com/originals/4d/aa/38/4daa38eaaef244c0218b361ae64baea9.jpg'
+  'https://i.pinimg.com/736x/e4/5f/40/e45f401e2d083048c3d6e725704d0619.jpg'
+  'https://i.ytimg.com/vi/voHNHRZ0qUU/maxresdefault.jpg'
+  'https://i.pinimg.com/originals/d2/83/de/d283dec6d6c8b19c3bdaf81ca31da7e9.jpg'
+  'https://external-preview.redd.it/fX-BW8AT4MiiVpu9TzKk9EsOYNqpIrljDD5gao07V4k.jpg?auto=webp&s=f0e8bfa3676f55c6e5657c412ded98dafbad4f5f'
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1I9Btkv6rcx8XrgK-TxLUinnqPtUN8pQgAg&usqp=CAU'
+  'https://static.billboard.com/files/media/Snoop-Dogg-Honored-With-Star-On-The-Hollywood-Walk-Of-Fame-billboard-1548-compressed.jpg'
+  'https://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/f7/f713050effaeeb541589b11bad17f7ac2b98719c_full.jpg'
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWklN9sW5yrV15AfvTfixhN4UwqgCFTahDMA&usqp=CAU'
+  'https://images3.memedroid.com/images/UPLOADED417/5cc49ecb953ce.jpeg'
+  'https://cdn.cnn.com/cnnnext/dam/assets/200826155913-snoop-dogg-martha-stewart-file-full-169.jpg'
+  'https://www.nme.com/wp-content/uploads/2016/09/SnoopDogg_getty18262675_290710-1.jpg'
+  'https://i.kym-cdn.com/photos/images/original/001/673/881/5fc.jpg'
+  'https://i0.wp.com/www.uselessdaily.com/wp-content/uploads/2016/11/Snoop-dogg.jpg?fit=545%2C368&ssl=1'
+  'https://external-preview.redd.it/ftNTNCm-TMsrab_sWo5BYUG51emFazCoWxMXxCDng0g.jpg?auto=webp&s=175b2b35cf06d8ea9c9420f72e8785bc0b0b6f49'
+  'https://i1.sndcdn.com/artworks-000245722753-m3cx1n-t500x500.jpg'
+]
+
 double_digit = (number) ->
   return if number > 9 then "" + number else "0" + number;
 
@@ -112,11 +131,13 @@ class Time
   find_comment: (msg, month, date, hour, minute) ->
     console.log month
     console.log date
+    if (hour == 4 and minute == 20 and month == 4 and date == 20)
+        return ". " + snoops[Math.floor(Math.random() * (snoops.length + 1))]
     if (hour == 4 and minute == 20)
         @increase(msg)
         return ". Blaze It :mary_jane:"
     if (month == 4 and date == 20)
-        return ". Let's get fucking lit fam :mary_jane:"
+        return ". Let's get fucking lit fam :mary_jane: " + snoops[Math.floor(Math.random() * (snoops.length + 1))]
     else if (hour == 3 and minute == 14)
         return ". :pie:"
     else
