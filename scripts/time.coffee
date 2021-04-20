@@ -267,10 +267,8 @@ module.exports = (robot) ->
       time.reset_today(today, score)
 
   # Why not
-  robot.respond(/random snoop$/i, (msg) => {
-    response = snoops[Math.floor(Math.random() * (snoops.length + 1))]
-    msg.send(response);
-  });
+  robot.respond /random snoop$/i, (msg) ->
+    msg.send snoops[Math.floor(Math.random() * (snoops.length + 1))]
 
   ###
   # Listen for "tron" and list the count of responders for today
