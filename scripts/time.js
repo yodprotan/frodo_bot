@@ -79,17 +79,17 @@ module.exports = (robot) => {
   robot.respond(/TIME$/i, (msg) => {
     tz = msg.message.user.slack.tz;
     today = (DateTime.local()).setZone(tz);
-    tz_s = " (" + tz + ")"
+    tz_s = " (" + tz + ")";
     console.log("today: " + today);
 
-    year_s = today.year + " "
+    year_s = today.year + " ";
 
-    month = today.month
-    month_s = monthlist[month] + " "
+    month = today.month;
+    month_s = monthlist[month] + " ";
 
-    day = today.day
-    date_s = today.day + ", "
-    day_s = daylist[today.weekday] + ", "
+    day = today.day;
+    date_s = today.day + ", ";
+    day_s = daylist[today.weekday] + ", ";
 
     hour = today.hour % 12;
     hour = hour > 0 ? hour : 12;
@@ -97,7 +97,7 @@ module.exports = (robot) => {
     minute = today.minute;
     minute_s = double_digit(minute);
 
-    comment = time.find_comment(msg, month, day, hour, minute)
+    comment = time.find_comment(msg, month, day, hour, minute);
     if (tz) {
       msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + tz_s + comment);
     } else {
@@ -119,10 +119,11 @@ module.exports = (robot) => {
     for (item_rank in rankingFunction(count)) {
       item = item_rank[0];
       rank = item_rank[1];
-      if (rank == 0) { verbiage.push(":first_place_medal: #{item.name} - #{item.score}"); }
-      else if (rank == 1) { verbiage.push(":second_place_medal: #{item.name} - #{item.score}"); }
-      else if (rank == 2) { verbiage.push(":third_place_medal: #{item.name} - #{item.score}"); }
-      else { verbiage.push("  #{rank + 1}. #{item.name} - #{item.score}"); }
+      console.log(item + ", " + rank);
+      if (rank == 0) { verbiage.push(":first_place_medal: ${item.name} - ${item.score}"); }
+      else if (rank == 1) { verbiage.push(":second_place_medal: ${item.name} - ${item.score}"); }
+      else if (rank == 2) { verbiage.push(":third_place_medal: ${item.name} - ${item.score}"); }
+      else { verbiage.push("  ${rank + 1}. ${item.name} - ${item.score}"); }
     }
 
     msg.send(verbiage.join("\n"));
