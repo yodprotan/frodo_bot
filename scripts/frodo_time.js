@@ -120,7 +120,7 @@ module.exports = (robot) => {
       if (rank == 0) { verbiage.push(`:first_place_medal: ${item.name} - ${item.score}`); }
       else if (rank == 1) { verbiage.push(`:second_place_medal: ${item.name} - ${item.score}`); }
       else if (rank == 2) { verbiage.push(`:third_place_medal: ${item.name} - ${item.score}`); }
-      else { verbiage.push(`  ${rank + 1}. ${item.name} - ${item.score}`); }
+      else { verbiage.push(`  ${parseInt(rank) + 1}. ${item.name} - ${item.score}`); }
     }
 
     msg.send(verbiage.join("\n"));
