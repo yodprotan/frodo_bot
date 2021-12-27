@@ -126,8 +126,6 @@ class Time
     sorted.slice(0, n)
 
   find_comment: (msg, month, date, hour, minute) ->
-    console.log month
-    console.log date
     if (hour == 4 and minute == 20 and month == 4 and date == 20)
         @increase(msg)
         return ". " + snoops[Math.floor(Math.random() * (snoops.length + 1))]
@@ -145,7 +143,6 @@ class Time
     if not @today
       @today = []
       
-    console.log @today
     return @today.length
 
   reset_today: (today, score) ->
