@@ -79,8 +79,7 @@ module.exports = (robot) => {
 
   robot.respond(/TIME$/i, (msg) => {
     tz = msg.message.user.slack.tz;
-    local = Datetime.local();
-    today = local.setZone(tz);
+    today = (DateTime.local()).setZone(tz);
     console.log("tz: " + tz);
     console.log("today: " + today);
 
@@ -95,7 +94,7 @@ module.exports = (robot) => {
     day_s = daylist[today.weekday] + ", "
 
     hour = today.hours % 12;
-    console.log("hours: " + today.hours);
+    console.log("hours: " + hour);
     hour = hour > 0 ? hour : 12;
     console.log("hours: " + hour);
 
