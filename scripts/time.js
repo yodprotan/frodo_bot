@@ -9,7 +9,7 @@
 //    `frodo time best n` - gets the leaderboard for this season
 //    `frodo all time best n ` - gets the leaderboard for all time
 
-import { DateTime } from 'luxon';
+const { DateTime } = require("luxon");
 require('coffee-script/register');
 import { Time } from './time.coffee';
 
