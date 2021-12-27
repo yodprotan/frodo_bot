@@ -76,7 +76,7 @@ module.exports = (robot) => {
   console.log(Time);
   time = new Time(robot);
 
-  robot.respond / TIME$ / i, (msg) => {
+  robot.respond(/TIME$/i), (msg) => {
     today = new Date()
 
     year_s = today.getFullYear() + " "
