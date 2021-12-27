@@ -116,7 +116,6 @@ module.exports = (robot) => {
     count = msg.match.length > 1 ? msg.match[1] : null
     verbiage = [title]
     for (const [rank, item] of Object.entries(rankingFunction(count))) {
-      console.log(rank + ", " + item);
       if (rank == 0) { verbiage.push(`:first_place_medal: ${item.name} - ${item.score}`); }
       else if (rank == 1) { verbiage.push(`:second_place_medal: ${item.name} - ${item.score}`); }
       else if (rank == 2) { verbiage.push(`:third_place_medal: ${item.name} - ${item.score}`); }
@@ -171,10 +170,12 @@ module.exports = (robot) => {
   robot.hear(/./i, (msg) => {
     tz = msg.message.user.slack.tz;
     today = DateTime.now().setZone(tz);
-    today = new Date();
-    hour = today.getHours() % 12;
+
+    hour = today.hour % 12;
     hour = hour > 0 ? hour : 12;
-    minute = today.getMinutes();
+
+    minute = today.minute;
+
     score = time.get_today(msg);
     if (score > 0 && not(hour == 4 && minute == 20) && msg.message.user.room == "CK58J140P") {
       emojiScore = ""

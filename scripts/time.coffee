@@ -149,9 +149,9 @@ class Time
     return @today.length
 
   reset_today: (today, score) ->
-    year = today.getFullYear()
-    month = double_digit today.getMonth() + 1
-    date = double_digit today.getDate()
+    year = today.year
+    month = double_digit today.month
+    date = double_digit today.day
 
     # Could you find a jankier way to cast to str?
     @score_by_day[("" + year + month + date)] ?= 0
