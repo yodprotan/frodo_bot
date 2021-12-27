@@ -76,7 +76,7 @@ module.exports = (robot) => {
   console.log(Time);
   time = new Time(robot);
 
-  robot.respond(/TIME$/i), (msg) => {
+  robot.respond(/TIME$/i, (msg) => {
     today = new Date()
 
     year_s = today.getFullYear() + " "
@@ -106,19 +106,19 @@ module.exports = (robot) => {
   // @param rankingFunction The function to call to get the ranking list
   //
   parseListMessage = (msg, title, rankingFunction) => {
-    count = msg.match.length > 1 ? msg.match[1] : null
-    verbiage = [title]
-    for (item_rank in rankingFunction(count)) {
-      item = item_rank[0];
-      rank = item_rank[1];
-      if (rank == 0) { verbiage.push(":first_place_medal: #{item.name} - #{item.score}"); }
-      else if (rank == 1) { verbiage.push(":second_place_medal: #{item.name} - #{item.score}"); }
-      else if (rank == 2) { verbiage.push(":third_place_medal: #{item.name} - #{item.score}"); }
-      else { verbiage.push("  #{rank + 1}. #{item.name} - #{item.score}"); }
-    }
+      count = msg.match.length > 1 ? msg.match[1] : null
+      verbiage = [title]
+      for (item_rank in rankingFunction(count)) {
+        item = item_rank[0];
+        rank = item_rank[1];
+        if (rank == 0) { verbiage.push(":first_place_medal: #{item.name} - #{item.score}"); }
+        else if (rank == 1) { verbiage.push(":second_place_medal: #{item.name} - #{item.score}"); }
+        else if (rank == 2) { verbiage.push(":third_place_medal: #{item.name} - #{item.score}"); }
+        else { verbiage.push("  #{rank + 1}. #{item.name} - #{item.score}"); }
+      }
 
-    msg.send(verbiage.join("\n"));
-  }
+      msg.send(verbiage.join("\n"));
+    }
 
 
   //
