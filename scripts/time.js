@@ -108,7 +108,9 @@ module.exports = (robot) => {
   parseListMessage = (msg, title, rankingFunction) => {
     count = msg.match.length > 1 ? msg.match[1] : null
     verbiage = [title]
-    for ((item, rank) in rankingFunction(count)) {
+    for (item_rank in rankingFunction(count)) {
+      item = item_rank[0];
+      rank = item_rank[1];
       if (rank == 0) { verbiage.push(":first_place_medal: #{item.name} - #{item.score}"); }
       else if (rank == 1) { verbiage.push(":second_place_medal: #{item.name} - #{item.score}"); }
       else if (rank == 2) { verbiage.push(":third_place_medal: #{item.name} - #{item.score}"); }
