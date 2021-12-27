@@ -80,7 +80,7 @@ module.exports = (robot) => {
     tz = msg.message.user.slack.tz;
     today = DateTime.now().setZone(tz);
 
-    year_s = today.year() + " "
+    year_s = today.year + " "
 
     month = today.month // for some dumb reason, this is indexed by 0
     month_s = monthlist[month] + " "
