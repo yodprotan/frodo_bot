@@ -80,7 +80,6 @@ module.exports = (robot) => {
     tz = msg.message.user.slack.tz;
     today = (DateTime.local()).setZone(tz);
     tz_s = " (" + tz + ")";
-    console.log("today: " + today);
 
     year_s = today.year + " ";
 
@@ -120,7 +119,7 @@ module.exports = (robot) => {
 
       item = item_rank[0];
       rank = item_rank[1];
-      console.log(item_rank);
+      console.log(rankingFunction(count));
       if (rank == 0) { verbiage.push(":first_place_medal: ${item.name} - ${item.score}"); }
       else if (rank == 1) { verbiage.push(":second_place_medal: ${item.name} - ${item.score}"); }
       else if (rank == 2) { verbiage.push(":third_place_medal: ${item.name} - ${item.score}"); }
