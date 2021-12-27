@@ -167,7 +167,7 @@ module.exports = (robot) => {
   robot.hear(/./i, (msg) => {
     tz = msg.message.user.slack.tz;
     today = DateTime.now().setZone(tz);
-
+    console.log("tz: " + tz);
     console.log(today);
     today = new Date();
     hour = today.getHours() % 12;
