@@ -13,7 +13,7 @@
 #   `frodo all time best n ` - gets the leaderboard for all time
 #   
 
-DateTime = require('luxon')
+DateTime = require('luxon/datetime')
 
 daylist = [ 
   'Sunday'  
