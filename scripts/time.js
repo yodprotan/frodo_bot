@@ -80,9 +80,8 @@ module.exports = (robot) => {
   robot.respond(/TIME$/i, (msg) => {
     tz = msg.message.user.slack.tz;
     today = (DateTime.local()).setZone(tz);
-    console.log("tz: " + tz);
+    tz_s = " (" + tz + ") "
     console.log("today: " + today);
-
 
     year_s = today.year + " "
 
@@ -100,7 +99,7 @@ module.exports = (robot) => {
     minute_s = double_digit(minute);
 
     comment = time.find_comment(msg, month, day, hour, minute)
-    msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + comment);
+    msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + tz_s + comment);
   });
 
 
