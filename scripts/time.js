@@ -73,14 +73,13 @@ snoops = [
 
 double_digit = (number) => { return number > 9 ? "" + number : "0" + number; }
 
-
 module.exports = (robot) => {
   time = new Time(robot);
 
   robot.respond(/TIME$/i, (msg) => {
     tz = msg.message.user.slack.tz;
     today = (DateTime.local()).setZone(tz);
-    tz_s = " (" + tz + ") "
+    tz_s = " (" + tz + ")"
     console.log("today: " + today);
 
     year_s = today.year + " "
@@ -99,7 +98,12 @@ module.exports = (robot) => {
     minute_s = double_digit(minute);
 
     comment = time.find_comment(msg, month, day, hour, minute)
-    msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + tz_s + comment);
+    if (tz) {
+      msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + tz_s + comment);
+    } else {
+      msg.send("Server time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + ' (America/Los_Angeles)' + comment);
+    }
+
   });
 
 
