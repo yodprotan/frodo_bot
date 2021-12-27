@@ -93,10 +93,8 @@ module.exports = (robot) => {
     date_s = today.day + ", "
     day_s = daylist[today.weekday] + ", "
 
-    hour = today.hours % 12;
-    console.log("hours: " + hour);
+    hour = today.hour % 12;
     hour = hour > 0 ? hour : 12;
-    console.log("hours: " + hour);
 
     minute = today.minute;
     minute_s = double_digit(minute);
