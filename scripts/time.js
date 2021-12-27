@@ -5,7 +5,7 @@
 // Configuration:
 //    None
 // Commands:
-//    `frodo time` - gets the server time
+//    `frodo time` - gets the user's local time
 //    `frodo time best n` - gets the leaderboard for this season
 //    `frodo all time best n ` - gets the leaderboard for all time
 
@@ -24,6 +24,7 @@ daylist = [
 ]
 
 monthlist = [
+  '',
   'January',
   'February',
   'March',
@@ -82,7 +83,7 @@ module.exports = (robot) => {
 
     year_s = today.year + " "
 
-    month = today.month // for some dumb reason, this is indexed by 0
+    month = today.month
     month_s = monthlist[month] + " "
 
     day = today.day
@@ -92,11 +93,11 @@ module.exports = (robot) => {
     hour = today.hours % 12;
     hour = hour > 0 ? hour : 12;
 
-    minute = today.minutes;
+    minute = today.minute;
     minute_s = double_digit(minute);
 
-    comment = time.find_comment(msg, month + 1, day, hour, minute)
-    msg.send("Server time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + comment);
+    comment = time.find_comment(msg, month, day, hour, minute)
+    msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + comment);
   });
 
 
