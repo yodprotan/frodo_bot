@@ -96,7 +96,7 @@ module.exports = (robot) => {
 
     comment = time.find_comment(msg, month + 1, date, hour, minute)
     msg.send("Server time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + comment);
-  }
+  });
 
 
   //
@@ -106,42 +106,42 @@ module.exports = (robot) => {
   // @param rankingFunction The function to call to get the ranking list
   //
   parseListMessage = (msg, title, rankingFunction) => {
-      count = msg.match.length > 1 ? msg.match[1] : null
-      verbiage = [title]
-      for (item_rank in rankingFunction(count)) {
-        item = item_rank[0];
-        rank = item_rank[1];
-        if (rank == 0) { verbiage.push(":first_place_medal: #{item.name} - #{item.score}"); }
-        else if (rank == 1) { verbiage.push(":second_place_medal: #{item.name} - #{item.score}"); }
-        else if (rank == 2) { verbiage.push(":third_place_medal: #{item.name} - #{item.score}"); }
-        else { verbiage.push("  #{rank + 1}. #{item.name} - #{item.score}"); }
-      }
-
-      msg.send(verbiage.join("\n"));
+    count = msg.match.length > 1 ? msg.match[1] : null
+    verbiage = [title]
+    for (item_rank in rankingFunction(count)) {
+      item = item_rank[0];
+      rank = item_rank[1];
+      if (rank == 0) { verbiage.push(":first_place_medal: #{item.name} - #{item.score}"); }
+      else if (rank == 1) { verbiage.push(":second_place_medal: #{item.name} - #{item.score}"); }
+      else if (rank == 2) { verbiage.push(":third_place_medal: #{item.name} - #{item.score}"); }
+      else { verbiage.push("  #{rank + 1}. #{item.name} - #{item.score}"); }
     }
+
+    msg.send(verbiage.join("\n"));
+  }
 
 
   //
   // Listen for "time best [n]" and return the top n rankings
   //
-  robot.respond(/time best\s*(\d+)?$/i), (msg) => {
+  robot.respond(/time best\s*(\d+)?$/i, (msg) => {
     parseData = parseListMessage(msg, "Most Dank", time.top)
-  }
+  });
 
   //
   // Listen for "all time best [n]" and return the top n rankings all time
   //
-  robot.respond(/all time best\s*(\d+)?$/i), (msg) => {
+  robot.respond(/all time best\s*(\d+)?$/i, (msg) => {
     parseData = parseListMessage(msg, "Most Dank of all time", time.top_all)
-  }
+  });
 
   //
   // Listen for "time reset" and reset the ranking, and
   // recording all time stats into aggregate_time
   //
-  robot.respond(/time reset/i), (msg) => {
+  robot.respond(/time reset/i, (msg) => {
     time.reset(msg)
-  }
+  });
 
 
   //
@@ -162,7 +162,7 @@ module.exports = (robot) => {
   // after four twenty
   // Note: This resets the day's count. 
   //
-  robot.hear(/./i), (msg) => {
+  robot.hear(/./i, (msg) => {
     today = DateTime.now().setZone(tz)
 
     console.log(today);
@@ -179,13 +179,13 @@ module.exports = (robot) => {
       msg.send("Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:");
       time.reset_today(today, score);
     }
-  }
+  });
 
 
   // Why not
-  robot.respond(/random snoop$ /i), (msg) => {
+  robot.respond(/random snoop$ /i, (msg) => {
     msg.send(snoops[Math.floor(Math.random() * (snoops.length + 1))]);
-  }
+  });
 
 
   //
