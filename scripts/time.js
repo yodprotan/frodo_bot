@@ -73,7 +73,7 @@ double_digit = (number) => { return number > 9 ? "" + number : "0" + number; }
 
 
 module.exports = (robot) => {
-  time = new Time;
+  time = new Time(robot);
 
   robot.respond / TIME$ / i, (msg) => {
     today = new Date()
