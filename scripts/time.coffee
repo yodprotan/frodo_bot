@@ -254,9 +254,10 @@ module.exports = (robot) ->
   # Note: This resets the day's count. 
   ###
   robot.hear /./i, (msg) ->
-    local_today = msg.message
-    console.log local_today
-    
+    ts = msg.message.id
+    tz = msg.user.slack.tz
+    console.log ts
+    console.log tz
     today = new Date()
     hour = today.getHours() % 12
     hour = if hour > 0 then hour else 12
