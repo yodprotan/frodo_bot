@@ -255,6 +255,7 @@ module.exports = (robot) ->
   ###
   robot.hear /./i, (msg) ->
     local_today = msg.message.ts
+    console.log local_today
     
     today = new Date()
     hour = today.getHours() % 12
