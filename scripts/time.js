@@ -11,7 +11,7 @@
 
 const { DateTime } = require("luxon");
 require('coffee-script/register');
-import { Time } from './time.coffee';
+const { Time } = require('./time.coffee');
 
 daylist = [
   'Sunday',
