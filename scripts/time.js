@@ -13,13 +13,14 @@ const { DateTime } = require("luxon");
 const { Time } = require('./time.coffee');
 
 daylist = [
-  'Sunday',
+  '',
   'Monday',
   'Tuesday',
   'Wednesday',
   'Thursday',
   'Friday',
-  'Saturday'
+  'Saturday',
+  'Sunday'
 ]
 
 monthlist = [
@@ -79,22 +80,22 @@ module.exports = (robot) => {
     tz = msg.message.user.slack.tz;
     today = DateTime.now().setZone(tz);
 
-    year_s = today.getFullYear() + " "
+    year_s = today.year() + " "
 
-    month = today.getMonth() // for some dumb reason, this is indexed by 0
+    month = today.month // for some dumb reason, this is indexed by 0
     month_s = monthlist[month] + " "
 
-    date = today.getDate()
-    date_s = today.getDate() + ", "
-    day_s = daylist[today.getDay()] + ", "
+    day = today.day
+    date_s = today.day + ", "
+    day_s = daylist[today.weekday] + ", "
 
-    hour = today.getHours() % 12
+    hour = today.hours % 12;
     hour = hour > 0 ? hour : 12;
 
-    minute = today.getMinutes()
+    minute = today.minutes;
     minute_s = double_digit(minute);
 
-    comment = time.find_comment(msg, month + 1, date, hour, minute)
+    comment = time.find_comment(msg, month + 1, day, hour, minute)
     msg.send("Server time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + comment);
   });
 
