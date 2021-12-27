@@ -254,9 +254,11 @@ module.exports = (robot) ->
   # Note: This resets the day's count. 
   ###
   robot.hear /./i, (msg) ->
+    local_today = msg.message.item.ts
+    
     today = new Date()
     hour = today.getHours() % 12
-    hour = if hour > 0 then hour else 12;
+    hour = if hour > 0 then hour else 12
     minute = today.getMinutes()
     score = time.get_today(msg)
     if score > 0 and not (hour == 4 and minute == 20) and msg.message.user.room == "CK58J140P"
