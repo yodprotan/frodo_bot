@@ -167,3 +167,5 @@ class Time
 
     @robot.brain.data.time = @time
     msg.reply "resetting the scoreboard, thanks for playing."
+
+exports.Time = Time
