@@ -80,6 +80,7 @@ module.exports = (robot) => {
   robot.respond(/TIME$/i, (msg) => {
     tz = msg.message.user.slack.tz;
     today = DateTime.now().setZone(tz);
+    console.log("tz: " + tz);
 
     year_s = today.year + " "
 
@@ -165,10 +166,8 @@ module.exports = (robot) => {
   // Note: This resets the day's count. 
   //
   robot.hear(/./i, (msg) => {
-    tz = JSON.stringify(msg.message.user.slack);
+    tz = msg.message.user.slack.tz;
     today = DateTime.now().setZone(tz);
-    console.log("tz: " + tz);
-    console.log(today);
     today = new Date();
     hour = today.getHours() % 12;
     hour = hour > 0 ? hour : 12;
