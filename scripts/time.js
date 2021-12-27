@@ -165,7 +165,7 @@ module.exports = (robot) => {
   // Note: This resets the day's count. 
   //
   robot.hear(/./i, (msg) => {
-    tz = msg;
+    tz = JSON.stringify(msg);
     today = DateTime.now().setZone(tz);
     console.log("tz: " + tz);
     console.log(today);
