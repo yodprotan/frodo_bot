@@ -255,7 +255,7 @@ module.exports = (robot) ->
   ###
   robot.hear /./i, (msg) ->
     ts = msg.message.id
-    tz = msg.user.slack.tz
+    tz = msg.message.user.slack.tz
     console.log ts
     console.log tz
     today = new Date()
