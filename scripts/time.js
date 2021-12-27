@@ -10,7 +10,6 @@
 //    `frodo all time best n ` - gets the leaderboard for all time
 
 const { DateTime } = require("luxon");
-require('coffee-script/register');
 const { Time } = require('./time.coffee');
 
 daylist = [
