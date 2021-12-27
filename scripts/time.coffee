@@ -13,6 +13,8 @@
 #   `frodo all time best n ` - gets the leaderboard for all time
 #   
 
+const { DateTime } = require("luxon");
+
 daylist = [ 
   'Sunday'  
   'Monday'  
@@ -254,10 +256,9 @@ module.exports = (robot) ->
   # Note: This resets the day's count. 
   ###
   robot.hear /./i, (msg) ->
-    ts = msg.message.id
-    tz = msg.message.user.slack.tz
-    console.log ts
-    console.log tz
+    today = DateTime.now().setZone(tz)
+    
+    console.log today
     today = new Date()
     hour = today.getHours() % 12
     hour = if hour > 0 then hour else 12
