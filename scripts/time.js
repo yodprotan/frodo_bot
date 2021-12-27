@@ -81,6 +81,8 @@ module.exports = (robot) => {
     tz = msg.message.user.slack.tz;
     today = DateTime.now().setZone(tz);
     console.log("tz: " + tz);
+    console.log("today: " + today);
+
 
     year_s = today.year + " "
 
@@ -92,7 +94,9 @@ module.exports = (robot) => {
     day_s = daylist[today.weekday] + ", "
 
     hour = today.hours % 12;
+    console.log("hours: " + hour);
     hour = hour > 0 ? hour : 12;
+    console.log("hours: " + hour);
 
     minute = today.minute;
     minute_s = double_digit(minute);
