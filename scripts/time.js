@@ -73,11 +73,11 @@ double_digit = (number) => { return number > 9 ? "" + number : "0" + number; }
 
 
 module.exports = (robot) => {
-  console.log(Time);
   time = new Time(robot);
 
   robot.respond(/TIME$/i, (msg) => {
-    today = new Date()
+    tz = msg.message.user.slack.tz;
+    today = DateTime.now().setZone(tz);
 
     year_s = today.getFullYear() + " "
 
@@ -163,7 +163,8 @@ module.exports = (robot) => {
   // Note: This resets the day's count. 
   //
   robot.hear(/./i, (msg) => {
-    today = DateTime.now().setZone(tz)
+    tz = msg.message.user.slack.tz;
+    today = DateTime.now().setZone(tz);
 
     console.log(today);
     today = new Date();
