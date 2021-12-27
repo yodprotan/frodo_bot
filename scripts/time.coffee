@@ -254,7 +254,7 @@ module.exports = (robot) ->
   # Note: This resets the day's count. 
   ###
   robot.hear /./i, (msg) ->
-    local_today = msg.message.item.ts
+    local_today = msg.message.ts
     
     today = new Date()
     hour = today.getHours() % 12
