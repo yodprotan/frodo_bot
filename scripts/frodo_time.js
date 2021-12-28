@@ -177,7 +177,7 @@ module.exports = (robot) => {
     minute = today.minute;
 
     score = time.get_today(msg);
-    if (score > 0 && not(minute == 20) && msg.message.user.room == "CK58J140P") {
+    if (score > 0 && minute != 20 && msg.message.user.room == "CK58J140P") {
       emojiScore = ""
       for (ch in score.toString()) {
         emojiScore += numberToEmoji[ch];
