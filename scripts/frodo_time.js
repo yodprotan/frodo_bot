@@ -12,7 +12,7 @@
 const { DateTime } = require("luxon");
 const { Time } = require('./time.coffee');
 
-daylist = [
+const daylist = [
   '',
   'Monday',
   'Tuesday',
@@ -23,7 +23,7 @@ daylist = [
   'Sunday'
 ]
 
-monthlist = [
+const monthlist = [
   '',
   'January',
   'February',
@@ -39,7 +39,7 @@ monthlist = [
   'December'
 ]
 
-numberToEmoji = {
+const numberToEmoji = {
   "1": ":one: ",
   "2": ":two: ",
   "3": ":three: ",
@@ -52,7 +52,7 @@ numberToEmoji = {
   "0": ":zero: "
 }
 
-snoops = [
+const snoops = [
   'https://i.pinimg.com/originals/4d/aa/38/4daa38eaaef244c0218b361ae64baea9.jpg',
   'https://i.pinimg.com/736x/e4/5f/40/e45f401e2d083048c3d6e725704d0619.jpg',
   'https://i.ytimg.com/vi/voHNHRZ0qUU/maxresdefault.jpg',
@@ -180,7 +180,7 @@ module.exports = (robot) => {
     console.log(score);
     if (score > 0 && minute != 20 && msg.message.user.room == "CK58J140P") {
       emojiScore = ""
-      for (ch in score.toString()) {
+      for (let ch of score.toString()) {
         emojiScore += numberToEmoji[ch];
       }
       msg.send("Congratulations on your " + emojiScore + "-tron :b: :ok_hand: :100:");

@@ -35,19 +35,6 @@ monthlist = [
   'December'
 ]  
 
-numberToEmoji = {
-  "1": ":one: "
-  "2": ":two: "
-  "3": ":three: "
-  "4": ":four: "
-  "5": ":five: "
-  "6": ":six: "
-  "7": ":seven: "
-  "8": ":eight: "
-  "9": ":nine: "
-  "0": ":zero: "
-}
-
 snoops = [
   'https://i.pinimg.com/originals/4d/aa/38/4daa38eaaef244c0218b361ae64baea9.jpg'
   'https://i.pinimg.com/736x/e4/5f/40/e45f401e2d083048c3d6e725704d0619.jpg'
