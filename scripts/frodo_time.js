@@ -168,6 +168,8 @@ module.exports = (robot) => {
   // Note: This resets the day's count. 
   //
   robot.hear(/./i, (msg) => {
+    local_today = msg.message.ts;
+    console.log(local_today);
     tz = msg.message.user.slack.tz;
     today = DateTime.now().setZone(tz);
 
