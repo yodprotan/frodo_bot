@@ -96,9 +96,11 @@ module.exports = (robot) => {
     minute = today.minute;
     minute_s = double_digit(minute);
 
-    comment = time.find_comment(msg, month, day, hour, minute);
+    seconds = today.seconds;
+
+    comment = time.find_comment(msg, month, day, hour, minute, seconds);
     if (tz) {
-      msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + tz_s + comment);
+      msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + ":" + seconds + tz_s + comment);
     } else {
       msg.send("Server time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + ' (America/Los_Angeles)' + comment);
     }
@@ -153,6 +155,9 @@ module.exports = (robot) => {
   //
   robot.respond(/time reset/i, (msg) => {
     time.reset(msg)
+  });
+  robot.respond(/score reset/i, (msg) => {
+    time.reset_score(msg)
   });
 
 

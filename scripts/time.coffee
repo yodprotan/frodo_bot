@@ -162,4 +162,11 @@ class Time
     @robot.brain.data.time = @time
     msg.reply "resetting the scoreboard, thanks for playing."
 
+  reset_score: (msg) ->
+    for key, val of @score
+      @score[key] = 0
+
+    @robot.brain.data.score = @score
+    msg.reply "resetting the score, thanks for playing."
+
 exports.Time = Time
