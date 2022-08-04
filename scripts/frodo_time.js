@@ -137,7 +137,7 @@ module.exports = (robot) => {
   // Listen for "best score [n]" and return the top n score rankings
   //
   robot.respond(/best score\s*(\d+)?$/i, (msg) => {
-    parseData = parseListMessage(msg, "Most Dank", time.top_score)
+    parseData = parseListMessage(msg, "Most Dank", time.top_points)
   });
 
   //
