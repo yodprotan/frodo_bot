@@ -134,6 +134,13 @@ module.exports = (robot) => {
   });
 
   //
+  // Listen for "best score [n]" and return the top n score rankings
+  //
+  robot.respond(/best score\s*(\d+)?$/i, (msg) => {
+    parseData = parseListMessage(msg, "Most Dank", time.top_score)
+  });
+
+  //
   // Listen for "all time best [n]" and return the top n rankings all time
   //
   robot.respond(/all time best\s*(\d+)?$/i, (msg) => {

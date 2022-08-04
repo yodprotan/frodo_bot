@@ -63,6 +63,7 @@ class Time
   constructor: (@robot) ->
     @time = {}
     @aggregate_time = {}
+    @score = {}
     @score_by_day = {}
     
     @robot.brain.on 'loaded', =>
@@ -72,10 +73,12 @@ class Time
         @aggregate_time = @robot.brain.data.aggregate_time
       if @robot.brain.data.score_by_day
         @score_by_day = @robot.brain.data.score_by_day
+      if @robot.brain.data.score
+        @score = @robot.brain.data.score
 
 
 
-  increase: (msg) ->
+  increase: (msg, points) ->
     if not @today
       @today = []
       
@@ -87,8 +90,11 @@ class Time
         @time[msg.message.user.name] += 1
         @aggregate_time[msg.message.user.name] ?= 0
         @aggregate_time[msg.message.user.name] += 1
+        @score[msg.message.user.name] ?= 0
+        @score[msg.message.user.name] += points
         @robot.brain.data.time = @time
         @robot.brain.data.aggregate_time = @aggregate_time
+        @robot.brain.data.score = @score
 
   set: (user, number) ->
     @time[user] = number
@@ -112,13 +118,17 @@ class Time
     sorted = @sort(@aggregate_time)
     sorted.slice(0, n)
 
-  find_comment: (msg, month, date, hour, minute) ->
-    if (hour == 4 and minute == 20 and month == 4 and date == 20)
-        @increase(msg)
-        return ". " + snoops[Math.floor(Math.random() * (snoops.length + 1))]
+  top_points: (n = 5) =>
+    sorted = @sort(@score)
+    sorted.slice(0, n)
+
+
+
+  find_comment: (msg, month, date, hour, minute, second) ->
     if (hour == 4 and minute == 20)
-        @increase(msg)
-        return ". Blaze It :mary_jane:"
+        points = 60-second
+        @increase(msg, points)
+        return ". " + points + "points :mary_jane:"
     if (month == 4 and date == 20)
         return ". Let's get fucking lit fam :mary_jane:"
     else if (hour == 3 and minute == 14)
