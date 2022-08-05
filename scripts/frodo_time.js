@@ -96,7 +96,7 @@ module.exports = (robot) => {
     minute = today.minute;
     minute_s = double_digit(minute);
 
-    seconds = today.seconds;
+    seconds = today.second;
 
     comment = time.find_comment(msg, month, day, hour, minute, seconds);
     if (tz) {
