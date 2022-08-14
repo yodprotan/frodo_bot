@@ -97,10 +97,11 @@ module.exports = (robot) => {
     minute_s = double_digit(minute);
 
     seconds = today.second;
+    seconds_s = double_digit(seconds);
 
     comment = time.find_comment(msg, month, day, hour, minute, seconds);
     if (tz) {
-      msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + ":" + seconds + tz_s + comment);
+      msg.send("User time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + ":" + seconds_s + tz_s + comment);
     } else {
       msg.send("Server time is: " + day_s + month_s + date_s + year_s + hour + ":" + minute_s + ' (America/Los_Angeles)' + comment);
     }
